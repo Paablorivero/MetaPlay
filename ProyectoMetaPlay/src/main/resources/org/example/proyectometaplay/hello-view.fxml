@@ -1,16 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.proyectometaplay.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox fx:id="VBox_Inicio" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectometaplay.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Button mnemonicParsing="false" text="Iniciar Sesion" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" translateX="250.0" translateY="-70.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Button>
+      <Label prefHeight="76.0" prefWidth="450.0" text="MetaPlay">
+         <font>
+            <Font name="Magneto Bold" size="52.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="106.0" fitWidth="114.0">
+               <image>
+                  <Image url="@../../../videojuego.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Separator prefWidth="200.0" />
+      <Label text="Bienvenido a la app de MetaPlay" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btn_MostrarJuegos" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+               <font>
+                  <Font name="Maiandra GD" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btn_filtrarConsola" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_filtrarGenero" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+   </children>
 </VBox>
