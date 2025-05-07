@@ -2,6 +2,22 @@ DROP DATABASE IF EXISTS schema_bbdd;
 CREATE DATABASE IF NOT EXISTS schema_bbdd;
 USE schema_bbdd;
 
+drop user if exists developer@localhost;
+create user developer@localhost identified by 'developer';
+
+
+grant all privileges on schema_bbdd.Consola to developer@localhost;
+
+grant all privileges on schema_bbdd.Usuario to developer@localhost;
+
+grant all privileges on schema_bbdd.Empresa to developer@localhost;
+
+grant all privileges on schema_bbdd.Videojuegos to developer@localhost;
+
+grant all privileges on schema_bbdd.Valoracion_Usuario to developer@localhost;
+
+grant all privileges on schema_bbdd.Valoracion_Empresa to developer@localhost;
+
 
 -- Tabla Consola
 CREATE TABLE Consola (
@@ -21,6 +37,7 @@ CREATE TABLE Usuario (
     Fecha_Nacimiento 		DATE NOT NULL
 );
 
+-- Tabla Empresa
 CREATE TABLE Empresa (
     CIF 					INT AUTO_INCREMENT PRIMARY KEY,
 	Nombre					VARCHAR(50) NOT NULL,
