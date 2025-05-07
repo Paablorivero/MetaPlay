@@ -14,7 +14,7 @@ public class AccessDCuniverseSQL {
 
     //acceder a todos videojuegos
     public List<VideoJuego> getVideojuegos() {
-        List<VideoJuego> productos = new LinkedList<>();
+        List<VideoJuego> videojuegos = new LinkedList<>();
 
         String prod = "SELECT * FROM Videojuegos";
 
@@ -23,20 +23,21 @@ public class AccessDCuniverseSQL {
             while(dataSet.next()){
 
                 int id = dataSet.getInt(1);
-                String titulo = dataSet.getString(2);
-                java.sql.Date sqlDate = dataSet.getDate(3);
+                int id_consola = dataSet.getInt(2);
+                String titulo = dataSet.getString(3);
+                GeneroV genero = GeneroV.valueOf(dataSet.getString(4));
+                String desarrollador = dataSet.getString(5);
+                double precio = dataSet.getDouble(6);
 
-                //convertir DATA de sql en LocalDate java
-                LocalDate fecha_reg = sqlDate.toLocalDate();
 
-                Articulo a =  new Articulo(cod, titulo, fecha_reg);
-                productos.add(a);
+                VideoJuego v = new VideoJuego(id, id_consola, titulo, genero, desarrollador, precio);
+                videojuegos.add(v);
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return productos;
+        return videojuegos;
     }
 
 

@@ -8,5 +8,15 @@ public enum GeneroV {
     COMEDIA,
     DOCUMENTALES,
     DRAMA,
-    FANTASIA
+    FANTASIA;
+
+
+    public static GeneroV fromString(String text) {
+        for (GeneroV value : GeneroV.values()) {
+            if (value.name().equalsIgnoreCase(text)) {
+                return value;
+            }
+        }
+        throw new IllegalArgumentException(text);
+    }
 }
