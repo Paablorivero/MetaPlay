@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS schema_bbdd;
 CREATE DATABASE IF NOT EXISTS schema_bbdd;
 USE schema_bbdd;
 
+drop user if exists developer@localhost;
+create user developer@localhost identified by 'developer';
 
 -- Tabla Consola
 CREATE TABLE Consola (
