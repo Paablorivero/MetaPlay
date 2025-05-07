@@ -40,6 +40,33 @@ public class AccessDCuniverseSQL {
         return videojuegos;
     }
 
+    //acceder a todos los usuarios
+    public List<Usuario> getUsuarios() {
+        List<Usuario> usuarios = new LinkedList<>();
+
+        String prod = "SELECT * FROM Usuario";
+
+        try (Connection connection = DataBaseManagerSQL.getConnection(); Statement statement = connection.createStatement();
+             ResultSet dataSet = statement.executeQuery(prod);) {
+            while(dataSet.next()){
+
+                int id = dataSet.getInt(1);
+                String nombre = dataSet.getString(2);
+                String apellido = dataSet.getString(3);
+                String usuario = dataSet.getString(4);
+                String correo = dataSet.getString(5);
+                LocalDate fechaNacimiento = LocalDate.parse(dataSet.getString(6));
+
+
+                Usuario u = new Usuario(id, nombre, apellido, usuario, correo, fechaNacimiento);
+                usuarios.add(u);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return usuarios;
+    }
 
 
 

@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Usuario {
 
-    private String id;
+    private int id;
     private String nombre;
     private String apellidos;
     private String usuario;
     private String correo;
     private LocalDate fechaNacimiento;
 
-    public Usuario(String id, String nombre, String apellidos, String usuario, String correo, LocalDate fechaNacimiento) {
+    public Usuario(int id, String nombre, String apellidos, String usuario, String correo, LocalDate fechaNacimiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -20,7 +20,7 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
