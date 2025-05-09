@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectometaplay.HelloController">
    <children>
       <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0">
@@ -67,8 +66,6 @@
                </children>
             </HBox>
          </children>
-      </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0">
       </VBox>
    </children>
 </VBox>
