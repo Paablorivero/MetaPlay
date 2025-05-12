@@ -97,10 +97,10 @@ public class AccessDCuniverseSQL {
 
 
     //acceder a todos los valoraciones de la empresas
-    public List<Valoracion_Usuario> getValoracionesUsuarios() {
-        List<Valoracion_Usuario> valoracionUsuarios = new LinkedList<>();
+    public List<Valoracion_Empresa> getValoracionesEmpresas() {
+        List<Valoracion_Empresa> valoracionEmpresas = new LinkedList<>();
 
-        String prod = "SELECT * FROM Valoracion_Usuario";
+        String prod = "SELECT * FROM Valoracion_Empresa";
 
         try (Connection connection = DataBaseManagerSQL.getConnection(); Statement statement = connection.createStatement();
              ResultSet dataSet = statement.executeQuery(prod);) {
@@ -108,20 +108,20 @@ public class AccessDCuniverseSQL {
 
                 int id = dataSet.getInt(1);
                 int idVideojuego = dataSet.getInt(2);
-                int idUsuario = dataSet.getInt(3);
+                int cifEmpresa = dataSet.getInt(3);
                 int puntuacion = dataSet.getInt(4);
                 String comentario = dataSet.getString(5);
                 LocalDate fechaValoracion = LocalDate.parse(dataSet.getString(6));
 
 
-                Valoracion_Usuario vu = new Valoracion_Usuario(id, idVideojuego, idUsuario, puntuacion, comentario, fechaValoracion);
-                valoracionUsuarios.add(vu);
+                Valoracion_Empresa ve = new Valoracion_Empresa(id, idVideojuego, cifEmpresa, puntuacion, comentario, fechaValoracion);
+                valoracionEmpresas.add(ve);
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return valoracionUsuarios;
+        return valoracionEmpresas;
     }
 
     //registrar un videojuego

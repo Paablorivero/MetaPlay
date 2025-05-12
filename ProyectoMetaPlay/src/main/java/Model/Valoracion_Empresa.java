@@ -1,5 +1,7 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Valoracion_Empresa {
 
     private int id;
@@ -7,15 +9,15 @@ public class Valoracion_Empresa {
     private int cifEmpresa;
     private int puntuacion;
     private String comentario;
-    private String fechaValoracion;
+    private LocalDate fechaValoracion;
 
-    public Valoracion_Empresa(int id, int idVideojuego, int cifEmpresa, int puntuacion, String comentario, String fechaValoracion) {
+    public Valoracion_Empresa(int id, int idVideojuego, int cifEmpresa, int puntuacion, String comentario, LocalDate fechaValoracion) {
         this.id = id;
         this.idVideojuego = idVideojuego;
         this.cifEmpresa = cifEmpresa;
         this.puntuacion = puntuacion;
         this.comentario = comentario;
-        this.fechaValoracion = fechaValoracion;
+        this.fechaValoracion = LocalDate.now();
     }
 
     public int getId() {
@@ -58,11 +60,11 @@ public class Valoracion_Empresa {
         this.comentario = comentario;
     }
 
-    public String getFechaValoracion() {
+    public LocalDate getFechaValoracion() {
         return fechaValoracion;
     }
 
-    public void setFechaValoracion(String fechaValoracion) {
+    public void setFechaValoracion(LocalDate fechaValoracion) {
         this.fechaValoracion = fechaValoracion;
     }
 
