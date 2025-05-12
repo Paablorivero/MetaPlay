@@ -1,0 +1,29 @@
+.btn-principal{
+    -fx-background-color: #000000;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-style: italic;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10 10 10 10;
+}
+
+.btn-principal:hover {
+    -fx-background-color: #525252;
+    -fx-font-size: 15px;
+}
+
+.btn-inicioSesion{
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-style: italic;
+    -fx-font-size: 11px;
+}
+
+.btn-inicioSesion:hover {
+    -fx-background-color: #525252;
+}
+
