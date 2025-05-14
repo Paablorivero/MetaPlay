@@ -5,10 +5,11 @@ package Model;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AccessDCuniverseSQL {
+public class AccessSql {
 
     //acceder a todos videojuegos
     public List<VideoJuego> getVideojuegos() {
@@ -16,7 +17,7 @@ public class AccessDCuniverseSQL {
 
         String prod = "SELECT * FROM Videojuegos";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection(); Statement statement = connection.createStatement();
+        try (Connection connection = DataBaseSql.getConnection(); Statement statement = connection.createStatement();
              ResultSet dataSet = statement.executeQuery(prod);) {
             while(dataSet.next()){
 
@@ -44,7 +45,7 @@ public class AccessDCuniverseSQL {
 
         String prod = "SELECT * FROM Usuario";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection(); Statement statement = connection.createStatement();
+        try (Connection connection = DataBaseSql.getConnection(); Statement statement = connection.createStatement();
              ResultSet dataSet = statement.executeQuery(prod);) {
             while(dataSet.next()){
 
@@ -73,7 +74,7 @@ public class AccessDCuniverseSQL {
 
         String prod = "SELECT * FROM Valoracion_Usuario";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection(); Statement statement = connection.createStatement();
+        try (Connection connection = DataBaseSql.getConnection(); Statement statement = connection.createStatement();
              ResultSet dataSet = statement.executeQuery(prod);) {
             while(dataSet.next()){
 
@@ -102,7 +103,7 @@ public class AccessDCuniverseSQL {
 
         String prod = "SELECT * FROM Valoracion_Empresa";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection(); Statement statement = connection.createStatement();
+        try (Connection connection = DataBaseSql.getConnection(); Statement statement = connection.createStatement();
              ResultSet dataSet = statement.executeQuery(prod);) {
             while(dataSet.next()){
 
@@ -129,7 +130,7 @@ public class AccessDCuniverseSQL {
 
         String sql = "INSERT INTO Videojuegos (ID, Consola_ID, Nombre, Genero, Desarrollador, Precio) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection();
+        try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, juego.getId());
@@ -150,7 +151,7 @@ public class AccessDCuniverseSQL {
 
         String sql = "INSERT INTO Usuario (ID, Nombre, Apellidos, Usuario, Contasena, Correo, Fecha_Nacimiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection();
+        try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
            statement.setInt(1, usuario.getId());
@@ -172,7 +173,7 @@ public class AccessDCuniverseSQL {
 
         String sql = "INSERT INTO Empresa (CIF, Nombre, Contasena, Correo) VALUES (?, ?, ?, ?)";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection();
+        try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, empresa.getCif());
@@ -192,7 +193,7 @@ public class AccessDCuniverseSQL {
 
         String sql = "INSERT INTO Consola (ID, Nombre, Empresa_desarrolladora) VALUES (?, ?, ?)";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection();
+        try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, consola.getId());
@@ -211,7 +212,7 @@ public class AccessDCuniverseSQL {
 
         String sql = "INSERT INTO Valoracion_Usuario (ID, Videojuego_ID, Usuario_ID, Puntuacion, Comentario, Fecha_valoracion) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection();
+        try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, valoracion_usuario.getId());
@@ -233,7 +234,7 @@ public class AccessDCuniverseSQL {
 
         String sql = "INSERT INTO Valoracion_Empresa (ID, Videojuego_ID, Empresa_CIF, Puntuacion, Comentario, Fecha_valoracion) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = DataBaseManagerSQL.getConnection();
+        try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, valoracion_empresa.getId());
@@ -252,7 +253,71 @@ public class AccessDCuniverseSQL {
 
 
 
+    //Encontrar en la lista los videojuegos de un genero exacto (filtro por genero)
 
+    public List<VideoJuego> getVideoJuegos(GeneroV genero) {
+        List<VideoJuego> videoJuegos = new ArrayList<>();
+
+        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM VideoJuego WHERE Genero=?";
+
+        try (Connection connection = DataBaseSql.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, genero.toString());
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    VideoJuego juego = new VideoJuego();
+                    juego.setId(resultSet.getInt("ID"));
+                    juego.setId_consola(resultSet.getInt("Consola_ID"));
+                    juego.setNombre(resultSet.getString("Nombre"));
+                    juego.setGenero(GeneroV.fromString(resultSet.getString("Genero")));
+                    juego.setDesarrollador(resultSet.getString("Desarrollador"));
+                    juego.setPrecio(resultSet.getDouble("Precio"));
+                    videoJuegos.add(juego);
+
+                }
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error al consultar videoJuegos de genero: " + e.getMessage());
+        }
+
+        return videoJuegos;
+    }
+
+    //Encontrar en la lista los videojuegos de una consola exacta (filtro por consola)
+
+    public List<VideoJuego> getVideoJuegos(Consola consola) {
+        List<VideoJuego> videoJuegos = new ArrayList<>();
+
+        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM VideoJuego WHERE Consola_ID=?";
+
+        try (Connection connection = DataBaseSql.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, consola.toString());
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    VideoJuego juego = new VideoJuego();
+                    juego.setId(resultSet.getInt("ID"));
+                    juego.setId_consola(resultSet.getInt("Consola_ID"));
+                    juego.setNombre(resultSet.getString("Nombre"));
+                    juego.setGenero(GeneroV.fromString(resultSet.getString("Genero")));
+                    juego.setDesarrollador(resultSet.getString("Desarrollador"));
+                    juego.setPrecio(resultSet.getDouble("Precio"));
+                    videoJuegos.add(juego);
+
+                }
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error al consultar videoJuegos de genero: " + e.getMessage());
+        }
+
+        return videoJuegos;
+    }
 
 
 

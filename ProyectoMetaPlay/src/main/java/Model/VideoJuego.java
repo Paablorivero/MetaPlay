@@ -18,6 +18,10 @@ public class VideoJuego {
         this.precio = precio;
     }
 
+    public VideoJuego() {
+
+    }
+
     public int getId() {
         return id;
     }

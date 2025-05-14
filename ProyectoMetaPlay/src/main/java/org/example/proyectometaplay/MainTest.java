@@ -1,6 +1,6 @@
 package org.example.proyectometaplay;
 
-import Model.AccessDCuniverseSQL;
+import Model.AccessSql;
 import Model.Usuario;
 import Model.VideoJuego;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MainTest {
 
-    private static AccessDCuniverseSQL BD = new AccessDCuniverseSQL();
+    private static AccessSql BD = new AccessSql();
 
     public static void main(String[] args) {
 
