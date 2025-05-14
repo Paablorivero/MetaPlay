@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1ef6424-9f4c-407e-8ac5-cfe00401bc79" name="Changes" comment="" />
+    <list default="true" id="b1ef6424-9f4c-407e-8ac5-cfe00401bc79" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +30,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "AccessDCuniverseSQL",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/daw1/Documents/MetaPlay/ProyectoMetaPlay",
+    "last_opened_file_path": "C:/Users/daw1/Documents/MetaPlay",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,6 +70,7 @@
       <updated>1747036435101</updated>
       <workItem from="1747036436262" duration="575000" />
       <workItem from="1747038610684" duration="154000" />
+      <workItem from="1747205797899" duration="311000" />
     </task>
     <servers />
   </component>
