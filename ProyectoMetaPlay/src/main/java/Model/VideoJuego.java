@@ -2,14 +2,14 @@ package Model;
 
 public class VideoJuego {
 
-    private String id;
-    private String id_consola;
+    private int id;
+    private int id_consola;
     private String nombre;
     private GeneroV genero;
     private String desarrollador;
     private double precio;
 
-    public VideoJuego(String id, String id_consola, String nombre, GeneroV genero, String desarrollador, double precio) {
+    public VideoJuego(int id, int id_consola, String nombre, GeneroV genero, String desarrollador, double precio) {
         this.id = id;
         this.id_consola = id_consola;
         this.nombre = nombre;
@@ -18,30 +18,53 @@ public class VideoJuego {
         this.precio = precio;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public String getId_consola() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId_consola() {
         return id_consola;
     }
 
-    public GeneroV getGenero() {
-        return genero;
+    public void setId_consola(int id_consola) {
+        this.id_consola = id_consola;
     }
 
     public String getNombre() {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public GeneroV getGenero() {
+        return genero;
+    }
+
+    public void setGenero(GeneroV genero) {
+        this.genero = genero;
+    }
+
     public String getDesarrollador() {
         return desarrollador;
+    }
+
+    public void setDesarrollador(String desarrollador) {
+        this.desarrollador = desarrollador;
     }
 
     public double getPrecio() {
         return precio;
     }
 
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
     @Override
     public String toString() {
