@@ -171,7 +171,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0">
+      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" translateX="100.0" translateY="20.0">
                <children>
@@ -504,7 +504,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
+      <VBox fx:id="Vbox_MejorValorados" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -534,19 +534,19 @@
                   <Insets left="70.0" top="10.0" />
                </VBox.margin>
             </Separator>
-            <ListView maxWidth="600.0" minWidth="180.0" prefHeight="270.0" prefWidth="180.0">
+            <ListView fx:id="ListView_MejorValorados" maxWidth="600.0" minWidth="180.0" prefHeight="270.0" prefWidth="180.0">
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
             </ListView>
-            <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
+            <Button fx:id="Btn_VolverInicio" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
                <VBox.margin>
                   <Insets left="280.0" top="20.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0" visible="false">
+      <VBox fx:id="VboxFiltrarJuego" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -578,7 +578,7 @@
             </Separator>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ListView maxWidth="300.0" minHeight="300.0" minWidth="180.0" prefHeight="270.0" prefWidth="300.0">
+                  <ListView fx:id="ListView_Filtro" maxWidth="300.0" minHeight="300.0" minWidth="180.0" prefHeight="270.0" prefWidth="300.0">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -593,12 +593,12 @@
                               <Insets left="20.0" top="30.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField maxWidth="100.0" prefWidth="100.0">
+                        <TextField fx:id="TextField_SeleccionFiltro" maxWidth="100.0" prefWidth="100.0">
                            <VBox.margin>
                               <Insets left="100.0" top="30.0" />
                            </VBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar">
+                        <Button fx:id="Btn_Filtrar" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar">
                            <VBox.margin>
                               <Insets left="119.0" top="10.0" />
                            </VBox.margin>
@@ -607,14 +607,14 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
+            <Button fx:id="Btn_Filtrar_VolverInicio" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
                <VBox.margin>
                   <Insets left="280.0" top="15.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
+      <VBox fx:id="Vbox_BusquedaFiltrada" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -644,12 +644,12 @@
                   <Insets bottom="10.0" left="70.0" />
                </VBox.margin>
             </Separator>
-            <ListView maxWidth="600.0" minHeight="300.0" minWidth="180.0" prefHeight="270.0" prefWidth="300.0">
+            <ListView fx:id="ListView_JuegosFiltrados" maxWidth="600.0" minHeight="300.0" minWidth="180.0" prefHeight="270.0" prefWidth="300.0">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
             </ListView>
-            <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
+            <Button fx:id="Btn_BusquedaFiltrada_VolverInicio" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
                <VBox.margin>
                   <Insets left="280.0" top="20.0" />
                </VBox.margin>
