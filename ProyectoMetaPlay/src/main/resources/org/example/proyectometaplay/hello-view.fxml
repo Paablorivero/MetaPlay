@@ -14,14 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" style="-fx-background-image: \@../../../img/fondo.png;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0" visible="false">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Button mnemonicParsing="false" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Iniciar Sesion" translateX="250.0" translateY="-70.0">
+            <Button fx:id="Btn_IniciarSesion" mnemonicParsing="false" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Iniciar Sesion" translateX="250.0" translateY="-70.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -70,7 +70,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -93,7 +93,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button mnemonicParsing="false" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse">
+                  <Button fx:id="Btn_Registrarse" mnemonicParsing="false" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
@@ -119,7 +119,7 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <TextField translateX="12.0" translateY="4.0">
+                        <TextField fx:id="TextField_InicioSesionUsuario" translateX="12.0" translateY="4.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -136,7 +136,7 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <TextField translateY="4.0">
+                        <TextField fx:id="TextField_InicioSesionContraseña" translateY="4.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -153,7 +153,7 @@
             </VBox>
             <HBox prefHeight="83.0" prefWidth="626.0" translateY="-40.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="101.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Acceder">
+                  <Button fx:id="Btn_Acceder" mnemonicParsing="false" prefHeight="44.0" prefWidth="101.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Acceder">
                      <HBox.margin>
                         <Insets left="250.0" top="20.0" />
                      </HBox.margin>
@@ -171,7 +171,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" translateX="100.0" translateY="20.0">
                <children>
@@ -213,7 +213,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField>
+                              <TextField fx:id="TextField_RegistroNombre">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -230,7 +230,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" />
+                              <TextField fx:id="TextField_RegistroApellidos" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" />
                            </children>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -243,7 +243,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroUsuario" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -260,7 +260,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" />
+                              <TextField fx:id="TextField_RegistroContraseña" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" />
                            </children>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -273,7 +273,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroCorreo" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -293,7 +293,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <TextField maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroNacimiento" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
                                  <HBox.margin>
                                     <Insets top="2.0" />
                                  </HBox.margin>
@@ -308,7 +308,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Separator>
-                        <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Usuario">
+                        <Button fx:id="Btn_RegistrarUsuario" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Usuario">
                            <VBox.margin>
                               <Insets left="60.0" top="20.0" />
                            </VBox.margin>
@@ -343,7 +343,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField maxHeight="25.0" maxWidth="145.0">
+                              <TextField fx:id="TextField_RegistroCIF" maxHeight="25.0" maxWidth="145.0">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -360,7 +360,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField maxWidth="145.0">
+                              <TextField fx:id="TextField_RegistroNombreEmpresa" maxWidth="145.0">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -377,7 +377,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField>
+                              <TextField fx:id="TextField_RegistroContraseñaEmpresa">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -394,7 +394,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField>
+                              <TextField fx:id="TextField_RegistroCorreoEmpresa">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -414,7 +414,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Separator>
-                        <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa">
+                        <Button fx:id="Btn_RegistrarEmpresa" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa">
                            <VBox.margin>
                               <Insets left="60.0" top="20.0" />
                            </VBox.margin>
@@ -428,7 +428,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0">
+      <VBox maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -455,6 +455,53 @@
                   <Insets left="70.0" />
                </VBox.margin>
             </Separator>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Ver Juegos">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btn_MostrarJuegos1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                           <font>
+                              <Font name="Maiandra GD" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="90.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btn_MostrarJuegos11" layoutX="10.0" layoutY="10.0" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                           <font>
+                              <Font name="Maiandra GD" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btn_MostrarJuegos111" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                           <font>
+                              <Font name="Maiandra GD" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </VBox>
       <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
@@ -495,7 +542,8 @@
             <Button mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
                <VBox.margin>
                   <Insets left="280.0" top="20.0" />
-               </VBox.margin></Button>
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
       <VBox maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0" visible="false">
