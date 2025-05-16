@@ -1,8 +1,7 @@
 .btn-principal{
-    -fx-background-color: #000000;
-    -fx-border-color: #FFFFFF;
+    -fx-background-color:  #FFC6C6;
     -fx-border-width: 2;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #000000;
     -fx-font-family: "Comic Sans MS";
     -fx-font-style: italic;
     -fx-font-size: 14px;
@@ -11,7 +10,7 @@
 }
 
 .btn-principal:hover {
-    -fx-background-color: #525252;
+    -fx-background-color: #FFD4D4;
     -fx-font-size: 15px;
 }
 

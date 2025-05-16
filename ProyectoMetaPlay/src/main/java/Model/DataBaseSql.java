@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataBaseManagerSQL {
+public class DataBaseSql {
 
     private static  String DRIVER;
     private static  String URL;
