@@ -19,4 +19,7 @@ public enum GeneroV {
         }
         throw new IllegalArgumentException(text);
     }
+
+
+
 }
