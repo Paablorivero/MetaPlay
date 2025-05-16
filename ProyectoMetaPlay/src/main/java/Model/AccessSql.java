@@ -255,10 +255,10 @@ public class AccessSql {
 
     //Encontrar en la lista los videojuegos de un genero exacto (filtro por genero)
 
-    public List<VideoJuego> getVideoJuegos(GeneroV genero) {
+    public List<VideoJuego> getVideoJuegosGenero(GeneroV genero) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
-        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM VideoJuego WHERE Genero=?";
+        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Genero=?";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -288,10 +288,10 @@ public class AccessSql {
 
     //Encontrar en la lista los videojuegos de una consola exacta (filtro por consola)
 
-    public List<VideoJuego> getVideoJuegos(Consola consola) {
+    public List<VideoJuego> getVideoJuegosConsola(Consola consola) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
-        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM VideoJuego WHERE Consola_ID=?";
+        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Consola_ID=?";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
