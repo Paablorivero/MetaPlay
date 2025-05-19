@@ -515,7 +515,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_MenuDeUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -542,14 +542,20 @@
                   <Insets left="70.0" />
                </VBox.margin>
             </Separator>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="100.0">
                <children>
                   <Label text="Ver Juegos">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets left="20.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
                   </Label>
-                  <Separator prefWidth="200.0" />
+                  <Separator maxWidth="150.0" prefWidth="50.0">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin></Separator>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn_MostrarJuegos1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
@@ -581,13 +587,65 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets top="100.0" />
+                        <Insets top="30.0" />
                      </VBox.margin>
                   </HBox>
                </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="113.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="100.0">
+               <children>
+                  <Label text="Valoraciones">
+                     <VBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Separator maxWidth="150.0" prefWidth="50.0">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btn_MostrarJuegos11" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Nueva &#10;valoracion">
+                           <font>
+                              <Font name="Maiandra GD" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="170.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btn_MostrarJuegos111" layoutX="10.0" layoutY="10.0" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
+                           <font>
+                              <Font name="Maiandra GD" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
             </VBox>
          </children>
       </VBox>
@@ -740,7 +798,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_BusquedaFiltrada" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0">
+      <VBox fx:id="Vbox_BusquedaFiltrada" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
