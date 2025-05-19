@@ -39,7 +39,7 @@ CREATE TABLE Usuario (
 
 -- Tabla Empresa
 CREATE TABLE Empresa (
-    CIF 					INT AUTO_INCREMENT PRIMARY KEY,
+    CIF 					VARCHAR(50) NOT NULL,
 	Nombre					VARCHAR(50) NOT NULL,
     Contasena				VARCHAR(30) NOT NULL,
     Correo 					VARCHAR(100) NOT NULL UNIQUE

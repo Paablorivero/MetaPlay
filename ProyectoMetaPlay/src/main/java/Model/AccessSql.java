@@ -68,6 +68,32 @@ public class AccessSql {
         return usuarios;
     }
 
+    //acceder a todas las empresas
+    public List<Empresa> getEmpresas() {
+        List<Empresa> empresas = new LinkedList<>();
+
+        String prod = "SELECT * FROM Empresa";
+
+        try (Connection connection = DataBaseSql.getConnection(); Statement statement = connection.createStatement();
+             ResultSet dataSet = statement.executeQuery(prod);) {
+            while(dataSet.next()){
+
+                String cif = dataSet.getString(1);
+                String nombre = dataSet.getString(2);
+                String contrasena = dataSet.getString(3);
+                String correo = dataSet.getString(4);
+
+
+                Empresa e = new Empresa(cif, nombre, contrasena, correo);
+                empresas.add(e);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return empresas;
+    }
+
     //acceder a todos los valoraciones de los usuarios
     public List<Valoracion_Usuario> getValoracionesUsuarios() {
         List<Valoracion_Usuario> valoracionUsuarios = new LinkedList<>();
@@ -176,7 +202,7 @@ public class AccessSql {
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setInt(1, empresa.getCif());
+            statement.setString(1, empresa.getCif());
             statement.setString(2, empresa.getNombre());
             statement.setString(3, empresa.getContrasena());
             statement.setString(4, empresa.getCorreo());
