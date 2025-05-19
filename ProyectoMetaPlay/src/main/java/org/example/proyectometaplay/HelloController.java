@@ -28,20 +28,68 @@ public class HelloController implements Initializable {
                 VBox_MenuPrincipal.setVisible(true);
                 VBox_InicioSesion.setVisible(false);
                 Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
+
                 break;
 
             case 1:
                 VBox_MenuPrincipal.setVisible(false);
                 VBox_InicioSesion.setVisible(true);
                 Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
                 break;
 
             case 2:
                 VBox_MenuPrincipal.setVisible(false);
                 VBox_InicioSesion.setVisible(false);
                 Vbox_Registro.setVisible(true);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
                 break;
-
+            case 3:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(true);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
+                break;
+            case 4:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(true);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
+                break;
+            case 5:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(true);
+                Vbox_BusquedaFiltrada.setVisible(false);
+                break;
+            case 6:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(true);
+                break;
             default:
                 VBox_MenuPrincipal.setVisible(true);
                 VBox_InicioSesion.setVisible(false);
@@ -141,6 +189,15 @@ public class HelloController implements Initializable {
 
     @FXML
     private VBox Vbox_Registro;
+
+    @FXML
+    private VBox Vbox_MenuDeUsuario;
+
+    @FXML
+    private VBox Vbox_MejorValorados;
+
+    @FXML
+    private VBox VboxFiltrarJuego;
 
     @FXML
     private VBox Vbox_BusquedaFiltrada;
