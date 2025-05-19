@@ -115,11 +115,9 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-<<<<<<< HEAD
-                  <Button fx:id="Btn_Registrarse" mnemonicParsing="false" onMouseClicked="#onBtn_Registrarse" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse">
-=======
+
                   <Button fx:id="Btn_Registrarse" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarUsuario" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse" translateX="-10.0">
->>>>>>> developer
+
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>

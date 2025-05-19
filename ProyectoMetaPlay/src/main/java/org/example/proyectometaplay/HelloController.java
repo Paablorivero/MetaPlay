@@ -142,6 +142,9 @@ public class HelloController implements Initializable {
     @FXML
     private VBox Vbox_Registro;
 
+    @FXML
+    private VBox Vbox_BusquedaFiltrada;
+
     //Botones de la aplicacion
     //Botones Pagina principal
     @FXML
