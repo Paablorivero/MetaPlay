@@ -2,23 +2,23 @@ package Model;
 
 public class Empresa {
 
-    private int cif;
+    private String cif;
     private String nombre;
     private String contrasena;
     private String correo;
 
-    public Empresa(int cif, String nombre, String contrasena, String correo) {
+    public Empresa(String cif, String nombre, String contrasena, String correo) {
         this.cif = cif;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.correo = correo;
     }
 
-    public int getCif() {
+    public String getCif() {
         return cif;
     }
 
-    public void setCif(int cif) {
+    public void setCif(String cif) {
         this.cif = cif;
     }
 
