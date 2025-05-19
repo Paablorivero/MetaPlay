@@ -71,7 +71,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0">
+      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -172,7 +172,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" translateX="100.0" translateY="20.0">
                <children>
@@ -415,7 +415,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Separator>
-                        <Button fx:id="Btn_RegistrarEmpresa" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa">
+                        <Button fx:id="Btn_RegistrarEmpresa" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarEmpresa" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa">
                            <VBox.margin>
                               <Insets left="60.0" top="20.0" />
                            </VBox.margin>

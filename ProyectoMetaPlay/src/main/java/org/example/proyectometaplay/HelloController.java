@@ -1,20 +1,53 @@
 package org.example.proyectometaplay;
 
+import Model.AccessSql;
 import Model.Empresa;
+import Model.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
 
 import java.awt.*;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
+    private static AccessSql miData = new AccessSql();
 
+    private void selectPanelVisible(int panel){
+        switch (panel) {
+
+            case 0:
+                VBox_MenuPrincipal.setVisible(true);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                break;
+
+            case 1:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(true);
+                Vbox_Registro.setVisible(false);
+                break;
+
+            case 2:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(true);
+                break;
+
+            default:
+                VBox_MenuPrincipal.setVisible(true);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VBox_MenuPrincipal.setVisible(true);
@@ -105,31 +138,42 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onBtn_IniciarSesion() {
-        VBox_MenuPrincipal.setVisible(false);
-        VBox_InicioSesion.setVisible(true);
-        Vbox_Registro.setVisible(false);
+        selectPanelVisible(1);
     }
     @FXML
     protected void onBtn_RegistrarUsuario() {
-        VBox_MenuPrincipal.setVisible(false);
-        VBox_InicioSesion.setVisible(false);
-        Vbox_Registro.setVisible(true);
+    selectPanelVisible(2);
     }
 
     @FXML
     protected void onBtn_RegistrarEmpresa() {
-    //    Empresa newEmpresa = new Empresa(
-        //TextField_RegistroCIF.getText(),
-       // TextField_RegistroNombreEmpresa.getText(),
-        //TextField_RegistroContraseñaEmpresa.getText(),
-        //TextField_RegistroCorreoEmpresa.getText()
-
-     //   );
+        Empresa newEmpresa = new Empresa(
+        TextField_RegistroCIF.getText(),
+        TextField_RegistroNombreEmpresa.getText(),
+        TextField_RegistroContraseñaEmpresa.getText(),
+        TextField_RegistroCorreoEmpresa.getText()
+      );
+        miData.registrarEmpresa(newEmpresa);
+        selectPanelVisible(1);
 
     }
 
     @FXML
-    protected void Btn_RegistrarUsuario() {}
+    protected void Btn_RegistrarUsuario() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaNacimiento = LocalDate.parse(TextField_RegistroNacimiento.getText(), formatter);
+        Usuario newUsuario = new Usuario(
+                TextField_RegistroNombre.getText(),
+                TextField_RegistroApellidos.getText(),
+                TextField_RegistroUsuario.getText(),
+                TextField_RegistroContraseña.getText(),
+                TextField_RegistroCorreo.getText(),
+                fechaNacimiento
+
+                );
+        miData.registrarUsuario(newUsuario);
+        selectPanelVisible(1);
+    }
 
 
 

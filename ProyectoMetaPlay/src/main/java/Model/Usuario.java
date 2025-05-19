@@ -22,6 +22,15 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public Usuario(String nombre, String apellidos, String usuario, String correo, String contrasena, LocalDate fechaNacimiento) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.usuario = usuario;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public int getId() {
         return id;
     }
