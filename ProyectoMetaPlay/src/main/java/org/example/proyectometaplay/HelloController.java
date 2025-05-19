@@ -1,5 +1,6 @@
 package org.example.proyectometaplay;
 
+import Model.Empresa;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -39,6 +40,10 @@ public class HelloController implements Initializable {
 
     private boolean validateDni(String dni) {
         return dni.matches("[0-9]{7,8}[A-Z a-z]");
+    }
+
+    private boolean validateCif(String cif) {
+        return cif.matches("[A-Z]{1}[0-9]{8}");
     }
 
     //Paneles de la aplicacion
@@ -111,10 +116,20 @@ public class HelloController implements Initializable {
         Vbox_Registro.setVisible(true);
     }
 
+    @FXML
     protected void onBtn_RegistrarEmpresa() {
-        
+    //    Empresa newEmpresa = new Empresa(
+        //TextField_RegistroCIF.getText(),
+       // TextField_RegistroNombreEmpresa.getText(),
+        //TextField_RegistroContraseñaEmpresa.getText(),
+        //TextField_RegistroCorreoEmpresa.getText()
+
+     //   );
 
     }
+
+    @FXML
+    protected void Btn_RegistrarUsuario() {}
 
 
 
