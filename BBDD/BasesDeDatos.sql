@@ -39,7 +39,7 @@ CREATE TABLE Usuario (
 
 -- Tabla Empresa
 CREATE TABLE Empresa (
-    CIF 					VARCHAR(50) NOT NULL,
+    CIF 					VARCHAR(50) NOT NULL PRIMARY KEY,
 	Nombre					VARCHAR(50) NOT NULL,
     Contasena				VARCHAR(30) NOT NULL,
     Correo 					VARCHAR(100) NOT NULL UNIQUE
@@ -73,7 +73,7 @@ CREATE TABLE Valoracion_Usuario (
 CREATE TABLE Valoracion_Empresa (
     ID 						INT AUTO_INCREMENT PRIMARY KEY,
     Videojuego_ID 			INT NOT NULL,
-    Empresa_CIF				INT NOT NULL,
+    Empresa_CIF				VARCHAR(50) NOT NULL,
     Puntuacion 				TINYINT NOT NULL CHECK (Puntuacion BETWEEN 1 AND 100),
     Comentario 				TEXT,
     Fecha_valoracion 		TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -96,12 +96,12 @@ INSERT INTO Usuario (Nombre, Apellidos, Usuario, Contasena, Correo, Fecha_Nacimi
 ('Ana', 'Martín Sánchez', 'anams', 'anapass', 'ana.martin@email.com', '1992-11-30'),
 ('David', 'Fernández Castro', 'davidfc', 'davidpass', 'david.fernandez@email.com', '1988-07-18');
 
-INSERT INTO Empresa (Nombre, Contasena, Correo) VALUES 
-('Electronic Arts', 'eapassword', 'contact@ea.com'),
-('Ubisoft', 'ubipass123', 'info@ubisoft.com'),
-('Activision Blizzard', 'actipass', 'contact@activision.com'),
-('Square Enix', 'squarepass', 'info@squareenix.com'),
-('Capcom', 'cappass', 'contact@capcom.com');
+INSERT INTO Empresa (CIF, Nombre, Contasena, Correo) VALUES 
+('A123456781', 'Electronic Arts', 'eapassword', 'contact@ea.com'),
+('A123456782', 'Ubisoft', 'ubipass123', 'info@ubisoft.com'),
+('A123456783', 'Activision Blizzard', 'actipass', 'contact@activision.com'),
+('A123456784', 'Square Enix', 'squarepass', 'info@squareenix.com'),
+('A123456785', 'Capcom', 'cappass', 'contact@capcom.com');
 
 INSERT INTO Videojuegos (Consola_ID, Nombre, Genero, Desarrollador, Precio) VALUES 
 (1, 'God of War Ragnarök', 'ACCION', 'Santa Monica Studio', 69.99),
@@ -118,10 +118,10 @@ INSERT INTO Valoracion_Usuario (Videojuego_ID, Usuario_ID, Puntuacion, Comentari
 (4, 5, 75, 'Buen RPG pero con muchos bugs al lanzamiento');
 
 INSERT INTO Valoracion_Empresa (Videojuego_ID, Empresa_CIF, Puntuacion, Comentario) VALUES 
-(1, 2, 90, 'Excelente trabajo de Santa Monica Studio'),
-(1, 3, 92, 'Referente en juegos de acción para PS5'),
-(2, 1, 85, 'Buen shooter pero necesita más contenido'),
-(2, 4, 88, '343 Industries hizo un gran trabajo'),
-(3, 5, 100, 'Obra maestra que redefine el género');
+(1, 'A123456781', 90, 'Excelente trabajo de Santa Monica Studio'),
+(1, 'A123456782', 92, 'Referente en juegos de acción para PS5'),
+(2, 'A123456783', 85, 'Buen shooter pero necesita más contenido'),
+(2, 'A123456784', 88, '343 Industries hizo un gran trabajo'),
+(3, 'A123456785', 100, 'Obra maestra que redefine el género');
 
 
