@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
     private static AccessSql miData = new AccessSql();
-
+    //Metodo para administrar el panel que quiero que este visible
     private void selectPanelVisible(int panel){
         switch (panel) {
 
@@ -48,11 +48,70 @@ public class HelloController implements Initializable {
                 Vbox_Registro.setVisible(false);
         }
     }
+    //Metodo para limpiar las celdas del formulario de registrar cada vez que entremos en el panel de registrar
+    private void limpiarFormulario() {
+        TextField_RegistroCIF.setText("");
+        TextField_RegistroNombreEmpresa.setText("");
+        TextField_RegistroContraseñaEmpresa.setText("");
+        TextField_RegistroCorreoEmpresa.setText("");
+        TextField_RegistroNombre.setText("");
+        TextField_RegistroApellidos.setText("");
+        TextField_RegistroUsuario.setText("");
+        TextField_RegistroContraseña.setText("");
+        TextField_RegistroCorreo.setText("");
+        TextField_RegistroNacimiento.setText("");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        VBox_MenuPrincipal.setVisible(true);
-        VBox_InicioSesion.setVisible(false);
-        Vbox_Registro.setVisible(false);
+    selectPanelVisible(0);
+
+    TextField_RegistroNombre.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if(!newValue){
+            if(!validateName(TextField_RegistroNombre.getText())){
+                TextField_RegistroNombre.setText("");
+                TextField_RegistroNombre.setPromptText("Valor incorrecto");
+            }
+        }
+    });
+    TextField_RegistroNombreEmpresa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if(!newValue){
+            if(!validateName(TextField_RegistroNombreEmpresa.getText())){
+                TextField_RegistroNombreEmpresa.setText("");
+                TextField_RegistroNombreEmpresa.setPromptText("Valor incorrecto");
+            }
+        }
+    });
+
+    TextField_RegistroCorreo.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if(!newValue){
+            if(!validateEmail(TextField_RegistroCorreo.getText())){
+                TextField_RegistroCorreo.setText("");
+                TextField_RegistroCorreo.setPromptText("Valor incorrecto");
+            }
+        }
+    });
+
+    TextField_RegistroCorreoEmpresa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if(!newValue){
+            if(!validateEmail(TextField_RegistroCorreoEmpresa.getText())){
+                TextField_RegistroCorreoEmpresa.setText("");
+                TextField_RegistroCorreoEmpresa.setPromptText("Valor incorrecto");
+            }
+        }
+    });
+
+    TextField_RegistroCIF.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if(!newValue){
+            if(!validateCif(TextField_RegistroCIF.getText())){
+                TextField_RegistroCIF.setText("");
+                TextField_RegistroCIF.setPromptText("Valor incorrecto");
+            }
+        }
+    });
+
+    TextField_RegistroNacimiento.setPromptText("dd/MM/yyyy");
+
 
 
     }
@@ -62,18 +121,12 @@ public class HelloController implements Initializable {
         return (name.length() > 3 && name.matches("[A-Z]{1}[a-z]{2,25}"));
     }
 
-    private boolean validatePhone(String phone){
-        return phone.matches("[1-9]{9}");
-    }
 
     private boolean validateEmail(String email){
         String emailPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         return email.matches(emailPattern);
     }
 
-    private boolean validateDni(String dni) {
-        return dni.matches("[0-9]{7,8}[A-Z a-z]");
-    }
 
     private boolean validateCif(String cif) {
         return cif.matches("[A-Z]{1}[0-9]{8}");
@@ -141,8 +194,9 @@ public class HelloController implements Initializable {
         selectPanelVisible(1);
     }
     @FXML
-    protected void onBtn_RegistrarUsuario() {
+    protected void onBtn_Registrarse() {
     selectPanelVisible(2);
+    limpiarFormulario();
     }
 
     @FXML
@@ -159,7 +213,7 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    protected void Btn_RegistrarUsuario() {
+    protected void onBtn_RegistrarUsuario() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaNacimiento = LocalDate.parse(TextField_RegistroNacimiento.getText(), formatter);
         Usuario newUsuario = new Usuario(

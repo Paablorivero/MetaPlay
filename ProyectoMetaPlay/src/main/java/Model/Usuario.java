@@ -22,7 +22,7 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Usuario(String nombre, String apellidos, String usuario, String correo, String contrasena, LocalDate fechaNacimiento) {
+    public Usuario(String nombre, String apellidos, String usuario, String contrasena, String correo, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;
