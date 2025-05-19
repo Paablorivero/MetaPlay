@@ -16,11 +16,8 @@
 
 <AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectometaplay.HelloController">
    <children>
-<<<<<<< HEAD
-      <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0">
-=======
-      <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0" style="-fx-background-color: #E1E1E1;">
->>>>>>> 420d88badfc1afb29eda6c35ded0f9ae5a632de0
+
+      <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0" style="-fx-background-color: #E1E1E1;" visible="false">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
@@ -74,7 +71,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -97,7 +94,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="Btn_Registrarse" mnemonicParsing="false" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse">
+                  <Button fx:id="Btn_Registrarse" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarUsuario" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
