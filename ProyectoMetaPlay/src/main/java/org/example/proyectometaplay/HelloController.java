@@ -94,6 +94,10 @@ public class HelloController implements Initializable {
                 VBox_MenuPrincipal.setVisible(true);
                 VBox_InicioSesion.setVisible(false);
                 Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
         }
     }
     //Metodo para limpiar las celdas del formulario de registrar cada vez que entremos en el panel de registrar
@@ -218,12 +222,16 @@ public class HelloController implements Initializable {
     private Button Btn_Registrarse;
     @FXML
     private Button Btn_Acceder;
+    @FXML
+    private Button Btn_atras_InicioSesion;
 
     //Botones panel registro
     @FXML
     private Button Btn_RegistrarUsuario;
     @FXML
     private Button Btn_RegistrarEmpresa;
+    @FXML
+    private Button btn_atras_Registrarse;
 
     //Formulario Registrar Usuario
     @FXML
@@ -249,6 +257,12 @@ public class HelloController implements Initializable {
     @FXML
     private TextField TextField_RegistroCorreoEmpresa;
 
+    //Texfiel inicio sesion
+    @FXML
+    private TextField TextField_InicioSesionUsuario;
+    @FXML
+    private TextField TextField_InicioSesionContraseña;
+
     @FXML
     protected void onBtn_IniciarSesion() {
         selectPanelVisible(1);
@@ -259,6 +273,17 @@ public class HelloController implements Initializable {
     limpiarFormulario();
     }
 
+    @FXML
+    protected void onBtn_atras_Registrarse() {
+        selectPanelVisible(1);
+        limpiarFormulario();
+    }
+    @FXML
+    protected void onBtn_atras_InicioSesion() {
+        selectPanelVisible(0);
+    }
+
+    //registrar Empresa
     @FXML
     protected void onBtn_RegistrarEmpresa() {
         Empresa newEmpresa = new Empresa(
@@ -271,7 +296,7 @@ public class HelloController implements Initializable {
         selectPanelVisible(1);
 
     }
-
+    //Registrar Usuario
     @FXML
     protected void onBtn_RegistrarUsuario() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -287,6 +312,23 @@ public class HelloController implements Initializable {
                 );
         miData.registrarUsuario(newUsuario);
         selectPanelVisible(1);
+    }
+
+    @FXML
+    protected void onBtn_Acceder() {
+        String usuario = TextField_InicioSesionUsuario.getText();
+        String password = TextField_InicioSesionContraseña.getText();
+
+        boolean credencialesCorrectas = false;
+
+        if
+
+
+
+
+
+
+
     }
 
 
