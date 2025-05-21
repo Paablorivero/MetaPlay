@@ -49,7 +49,7 @@
             <Label text="Bienvenido a la app de MetaPlay" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btn_MostrarJuegos" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                  <Button fx:id="btn_MostrarJuegos" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                      <font>
                         <Font name="Maiandra GD" size="15.0" />
                      </font>
@@ -77,7 +77,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0">
+      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -183,7 +183,7 @@
             </VBox>
             <HBox prefHeight="83.0" prefWidth="626.0" translateY="-40.0">
                <children>
-                  <Button fx:id="Btn_Acceder" mnemonicParsing="false" prefHeight="44.0" prefWidth="101.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Acceder">
+                  <Button fx:id="Btn_Acceder" mnemonicParsing="false" onMouseClicked="#onBtn_Acceder" prefHeight="44.0" prefWidth="101.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Acceder">
                      <HBox.margin>
                         <Insets left="250.0" top="20.0" />
                      </HBox.margin>
@@ -558,7 +558,7 @@
                      </VBox.margin></Separator>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_MostrarJuegos1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                        <Button fx:id="btn_MostrarJuegos1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -649,13 +649,13 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_MejorValorados" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
+      <VBox fx:id="Vbox_MejorValorados" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="btn_atras_MejorValorados" mnemonicParsing="false" onMouseClicked="#onbtn_atras_MejorValorados">
                      <graphic>
-                        <ImageView fx:id="btn_atras_MejorValorados" fitHeight="20.0" fitWidth="20.0">
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
                            <image>
                               <Image url="@../../../img/atras.png" />
                            </image>
@@ -699,7 +699,7 @@
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
             </ListView>
-            <Button fx:id="Btn_VolverInicio" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
+            <Button fx:id="Btn_VolverInicio" mnemonicParsing="false" onMouseClicked="#onBtn_VolverInicio" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
                <VBox.margin>
                   <Insets left="280.0" top="10.0" />
                </VBox.margin>

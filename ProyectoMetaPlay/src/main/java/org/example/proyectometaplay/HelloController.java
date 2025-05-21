@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
+import java.util.List;
+import javafx.scene.control.Alert;
 
 import javafx.event.ActionEvent;
 
@@ -112,6 +114,11 @@ public class HelloController implements Initializable {
         TextField_RegistroContraseña.setText("");
         TextField_RegistroCorreo.setText("");
         TextField_RegistroNacimiento.setText("");
+    }
+    //Metodo para limpiar iniciar sesion
+    private void cleanLogIn(){
+        TextField_InicioSesionUsuario.setText("");
+        TextField_InicioSesionContraseña.setText("");
     }
 
     @Override
@@ -233,6 +240,13 @@ public class HelloController implements Initializable {
     @FXML
     private Button btn_atras_Registrarse;
 
+
+    //Botones mejor valorados
+    @FXML
+    private Button Btn_VolverInicio;
+    @FXML
+    private Button btn_atras_MejorValorados;
+
     //Formulario Registrar Usuario
     @FXML
     private TextField TextField_RegistroNombre;
@@ -316,21 +330,54 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onBtn_Acceder() {
-        String usuario = TextField_InicioSesionUsuario.getText();
+        String usuarioInt = TextField_InicioSesionUsuario.getText();
         String password = TextField_InicioSesionContraseña.getText();
 
-        boolean credencialesCorrectas = false;
+        // Obtener la lista de usuarios de la base de datos
+        List <Usuario> usuarios = miData.getUsuarios();
 
-        if
+        // Buscar coincidencia de usuario y contraseña
+        boolean credencialesValidas = false;
+        Usuario usuarioAutenticado = null;
 
-
-
-
-
-
+        for (Usuario usuario : usuarios) {
+            if (usuario.getUsuario().equals(usuarioInt) &&
+                    usuario.getContrasena().equals(password)) {
+                credencialesValidas = true;
+                usuarioAutenticado = usuario;
+                break;
+            }
+        }
+        if(credencialesValidas == true) {
+            selectPanelVisible(3);
+        }else {
+            showAlert(Alert.AlertType.ERROR, "Error", "Usuario o contraseña incorrectos");
+            cleanLogIn();
+        }
 
     }
+    //Mostrar alertas
+    private void showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();}
 
+
+    //Boton del menu de usuario a mejores valorados
+    @FXML
+    private void onBtn_MostrarJuegos(){
+        selectPanelVisible(4);
+    }
+    @FXML
+    private void onBtn_VolverInicio(){
+        selectPanelVisible(0);
+    }
+    @FXML
+    private void onbtn_atras_MejorValorados(){
+        selectPanelVisible(0);
+    }
 
 
 
