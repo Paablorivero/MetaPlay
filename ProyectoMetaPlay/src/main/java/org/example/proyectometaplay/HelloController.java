@@ -280,6 +280,7 @@ public class HelloController implements Initializable {
     @FXML
     protected void onBtn_IniciarSesion() {
         selectPanelVisible(1);
+        cleanLogIn();
     }
     @FXML
     protected void onBtn_Registrarse() {
