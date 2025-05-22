@@ -363,7 +363,8 @@ public class HelloController implements Initializable {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
-        alert.showAndWait();}
+        alert.showAndWait();
+    }
 
 
     //Boton del menu de usuario a mejores valorados
