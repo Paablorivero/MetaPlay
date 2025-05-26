@@ -8,6 +8,7 @@ public class VideoJuego {
     private GeneroV genero;
     private String desarrollador;
     private double precio;
+    private double puntuacionGlobal;
 
     public VideoJuego(int id, int id_consola, String nombre, GeneroV genero, String desarrollador, double precio) {
         this.id = id;
@@ -16,6 +17,16 @@ public class VideoJuego {
         this.genero = genero;
         this.desarrollador = desarrollador;
         this.precio = precio;
+    }
+
+    public VideoJuego(int id, int id_consola, String nombre, GeneroV genero, String desarrollador, double precio, double puntuacionGlobal) {
+        this.id = id;
+        this.id_consola = id_consola;
+        this.nombre = nombre;
+        this.genero = genero;
+        this.desarrollador = desarrollador;
+        this.precio = precio;
+        this.puntuacionGlobal = puntuacionGlobal;
     }
 
     public VideoJuego() {
@@ -70,6 +81,14 @@ public class VideoJuego {
         this.precio = precio;
     }
 
+    public double getPuntuacionGlobal() {
+        return puntuacionGlobal;
+    }
+
+    public void setPuntuacionGlobal(double puntuacionGlobal) {
+        this.puntuacionGlobal = puntuacionGlobal;
+    }
+
     @Override
     public String toString() {
         return "VideoJuego{" +
@@ -81,4 +100,6 @@ public class VideoJuego {
                 ", precio=" + precio +
                 '}';
     }
+
+
 }

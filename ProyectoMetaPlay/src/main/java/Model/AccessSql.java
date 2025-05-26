@@ -352,6 +352,41 @@ public class AccessSql {
 
 
 
+    public List<VideoJuego> obtenerMejoresVideojuegos(Connection connection) throws SQLException {
+        List<VideoJuego> mejoresJuegos = new ArrayList<>();
+
+        String sql = "SELECT " +
+                "   v.ID AS Videojuego_ID, " +
+                "   v.Nombre AS Nombre_Videojuego, " +
+                "   COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios, " +
+                "   COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas, " +
+                "   (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global " +
+                "FROM " +
+                "   Videojuegos v " +
+                "LEFT JOIN Valoracion_Usuario u ON v.ID = u.Videojuego_ID " +
+                "LEFT JOIN Valoracion_Empresa e ON v.ID = e.Videojuego_ID " +
+                "GROUP BY v.ID, v.Nombre " +
+                "ORDER BY Puntuacion_Media_Usuarios DESC " +
+                "LIMIT 5";
+
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                VideoJuego juego = new VideoJuego();
+                juego.setId(rs.getInt("Videojuego_ID"));
+                juego.setNombre(rs.getString("Nombre_Videojuego"));
+                juego.setPuntuacionGlobal(rs.getDouble("Puntuacion_Global"));
+
+                mejoresJuegos.add(juego);
+            }
+        }
+
+        return mejoresJuegos;
+    }
+
+
+
 
 
 
