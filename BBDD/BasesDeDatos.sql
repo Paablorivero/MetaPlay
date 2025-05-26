@@ -126,19 +126,19 @@ INSERT INTO Valoracion_Empresa (Videojuego_ID, Empresa_CIF, Puntuacion, Comentar
 
 
 -- CREATE VIEW Valoracion_Global AS
-SELECT 
-    v.ID AS Videojuego_ID,
-    v.Nombre AS Nombre_Videojuego,
-    COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios,
-    COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas,
-    (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global
-FROM 
-    Videojuegos v
-LEFT JOIN 
-    Valoracion_Usuario u ON v.ID = u.Videojuego_ID
-LEFT JOIN 
-    Valoracion_Empresa e ON v.ID = e.Videojuego_ID
-GROUP BY 
-    v.ID, v.Nombre;
+-- SELECT 
+--     v.ID AS Videojuego_ID,
+--     v.Nombre AS Nombre_Videojuego,
+--     COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios,
+--     COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas,
+--     (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global
+-- FROM 
+--     Videojuegos v
+-- LEFT JOIN 
+--     Valoracion_Usuario u ON v.ID = u.Videojuego_ID
+-- LEFT JOIN 
+--     Valoracion_Empresa e ON v.ID = e.Videojuego_ID
+-- GROUP BY 
+--     v.ID, v.Nombre;
 
 
