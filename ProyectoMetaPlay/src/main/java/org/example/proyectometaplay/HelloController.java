@@ -3,14 +3,19 @@ package org.example.proyectometaplay;
 import Model.AccessSql;
 import Model.Empresa;
 import Model.Usuario;
+import Model.VideoJuego;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+
+import java.sql.SQLException;
 import java.util.List;
-import javafx.scene.control.Alert;
 
 import javafx.event.ActionEvent;
 
@@ -171,7 +176,28 @@ public class HelloController implements Initializable {
 
     TextField_RegistroNacimiento.setPromptText("dd/MM/yyyy");
 
+    //Le damos un formato de celdas al listview Para que salga bien los mejores valorados
+        ListView_MejorValorados.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(VideoJuego videojuego, boolean empty) {
+                super.updateItem(videojuego, empty);
+                if (empty || videojuego == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("ID: %d, Nombre: %s, Puntuación Global: %.2f",
+                            videojuego.getId(),
+                            videojuego.getNombre(),
+                            videojuego.getPuntuacionGlobal()));
+                }
+            }
+        });
 
+    //Listview para los mejores valorados
+        try {
+            ListView_MejorValorados.setItems(FXCollections.observableList(miData.obtenerMejoresVideojuegos()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -271,11 +297,15 @@ public class HelloController implements Initializable {
     @FXML
     private TextField TextField_RegistroCorreoEmpresa;
 
-    //Texfiel inicio sesion
+    //Textfield inicio sesion
     @FXML
     private TextField TextField_InicioSesionUsuario;
     @FXML
     private TextField TextField_InicioSesionContraseña;
+
+    //Listview
+    @FXML
+    private ListView<VideoJuego> ListView_MejorValorados;
 
     @FXML
     protected void onBtn_IniciarSesion() {

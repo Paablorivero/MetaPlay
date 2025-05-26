@@ -352,7 +352,7 @@ public class AccessSql {
 
 
 
-    public List<VideoJuego> obtenerMejoresVideojuegos(Connection connection) throws SQLException {
+    public List<VideoJuego> obtenerMejoresVideojuegos() throws SQLException {
         List<VideoJuego> mejoresJuegos = new ArrayList<>();
 
         String sql = "SELECT " +
@@ -369,7 +369,8 @@ public class AccessSql {
                 "ORDER BY Puntuacion_Media_Usuarios DESC " +
                 "LIMIT 5";
 
-        try (Statement stmt = connection.createStatement();
+        try (Connection connection = DataBaseSql.getConnection();
+            Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
