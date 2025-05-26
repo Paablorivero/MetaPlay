@@ -87,7 +87,7 @@ public class MainTest {
 
     public static void mostrarMejoresVideojuegos() {
         try (Connection connection = DataBaseSql.getConnection()) {
-            List<VideoJuego> videojuegos = BD.obtenerMejoresVideojuegos(connection);
+            List<VideoJuego> videojuegos = BD.obtenerMejoresVideojuegos();
 
             if (videojuegos.isEmpty()) {
                 System.out.println("No hay videojuegos con puntuación superior a 90");
