@@ -397,7 +397,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="MenuUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_MenuDeUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -652,7 +652,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="SeleccionJuego" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0">
+      <VBox fx:id="Vbox_SeleccionJuego" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>

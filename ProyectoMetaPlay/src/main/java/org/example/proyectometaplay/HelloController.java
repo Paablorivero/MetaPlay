@@ -34,7 +34,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-
+                Vbox_SeleccionJuego.setVisible(false);
                 break;
 
             case 1:
@@ -45,6 +45,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(false);
                 break;
 
             case 2:
@@ -55,6 +56,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(false);
                 break;
             case 3:
                 VBox_MenuPrincipal.setVisible(false);
@@ -64,6 +66,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(false);
                 break;
             case 4:
                 VBox_MenuPrincipal.setVisible(false);
@@ -73,6 +76,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(true);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(false);
                 break;
             case 5:
                 VBox_MenuPrincipal.setVisible(false);
@@ -82,6 +86,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(true);
                 Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(false);
                 break;
             case 6:
                 VBox_MenuPrincipal.setVisible(false);
@@ -91,6 +96,17 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(true);
+                Vbox_SeleccionJuego.setVisible(false);
+                break;
+            case 7:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(true);
                 break;
             default:
                 VBox_MenuPrincipal.setVisible(true);
@@ -100,6 +116,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
+                Vbox_SeleccionJuego.setVisible(false);
         }
     }
     //Metodo para limpiar las celdas del formulario de registrar cada vez que entremos en el panel de registrar
@@ -212,6 +229,9 @@ public class HelloController implements Initializable {
 
     @FXML
     private VBox Vbox_BusquedaFiltrada;
+
+    @FXML
+    private VBox Vbox_SeleccionJuego;
 
     //Botones de la aplicacion
     //Botones Pagina principal
