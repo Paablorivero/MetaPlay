@@ -332,14 +332,16 @@ public class AccessSql {
         String sql = "SELECT " +
                 "   v.ID AS Videojuego_ID, " +
                 "   v.Nombre AS Nombre_Videojuego, " +
-                "   (NZ(AVG(u.Puntuacion), 0) * 0.7 + NZ(AVG(e.Puntuacion), 0) * 0.3) AS Puntuacion_Global " +
+                "   COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios, " +
+                "   COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas, " +
+                "   (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global " +
                 "FROM " +
-                "   (Videojuegos AS v " +
-                "   LEFT JOIN Valoracion_Usuario AS u ON v.ID = u.Videojuego_ID " +
-                "   LEFT JOIN Valoracion_Empresa AS e ON v.ID = e.Videojuego_ID) " +
+                "   Videojuegos v " +
+                "LEFT JOIN Valoracion_Usuario u ON v.ID = u.Videojuego_ID " +
+                "LEFT JOIN Valoracion_Empresa e ON v.ID = e.Videojuego_ID " +
                 "GROUP BY v.ID, v.Nombre " +
-                "HAVING (NZ(AVG(u.Puntuacion), 0) * 0.7 + NZ(AVG(e.Puntuacion), 0) * 0.3) > 90 " +
-                "ORDER BY Puntuacion_Global DESC";
+                "ORDER BY Puntuacion_Media_Usuarios DESC " +
+                "LIMIT 5";
 
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -349,12 +351,14 @@ public class AccessSql {
                 juego.setId(rs.getInt("Videojuego_ID"));
                 juego.setNombre(rs.getString("Nombre_Videojuego"));
                 juego.setPuntuacionGlobal(rs.getDouble("Puntuacion_Global"));
+
                 mejoresJuegos.add(juego);
             }
         }
 
         return mejoresJuegos;
     }
+
 
 
 

@@ -94,13 +94,17 @@ public class MainTest {
             } else {
                 System.out.println("\n--- MEJORES VIDEOJUEGOS ---");
                 for (VideoJuego videojuego : videojuegos) {
-                    System.out.println(videojuego.toString());
+                    System.out.printf("ID: %d, Nombre: %s, Puntuación Global: %.2f%n",
+                            videojuego.getId(),
+                            videojuego.getNombre(),
+                            videojuego.getPuntuacionGlobal());
                 }
             }
         } catch (SQLException e) {
             System.err.println("Error al obtener los videojuegos: " + e.getMessage());
         }
     }
+
 
     public static void monstrarUsuarios() {
         List<Usuario> usuarios = BD.getUsuarios();

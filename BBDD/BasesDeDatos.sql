@@ -125,7 +125,7 @@ INSERT INTO Valoracion_Empresa (Videojuego_ID, Empresa_CIF, Puntuacion, Comentar
 (3, 5, 100, 'Obra maestra que redefine el género');
 
 
-CREATE VIEW Valoracion_Global AS
+-- CREATE VIEW Valoracion_Global AS
 SELECT 
     v.ID AS Videojuego_ID,
     v.Nombre AS Nombre_Videojuego,
