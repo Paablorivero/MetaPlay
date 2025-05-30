@@ -144,7 +144,7 @@ public class HelloController implements Initializable {
         selectPanelVisible(5);
         FiltroGenero();
         seleccionFiltro = SeleccionFiltro.getValue();
-        List<VideoJuego> filtroGenero = miData.getVideoJuegosGenero(convertirTextoAGenero(seleccionFiltro));
+        ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosGenero(GeneroV.valueOf(SeleccionFiltro.getValue()))));
         tipoDeFiltro = 1;
     }
 
