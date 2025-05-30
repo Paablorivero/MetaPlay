@@ -137,6 +137,7 @@ public class HelloController implements Initializable {
         selectPanelVisible(5);
         FiltroConsola();
         tipoDeFiltro = 0;
+
     }
 
     @FXML
