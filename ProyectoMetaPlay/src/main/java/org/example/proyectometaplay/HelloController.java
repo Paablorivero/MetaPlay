@@ -151,8 +151,8 @@ public class HelloController implements Initializable {
     @FXML
     protected void onFiltrarButton(ActionEvent event){
         selectPanelVisible(6);
-            VideojuegosFiltrados.addAll(filtroGenero);
-            ListView_JuegosFiltrados.setItems(VideojuegosFiltrados);
+        VideojuegosFiltrados.addAll(filtroGenero);
+        ListView_JuegosFiltrados.setItems(VideojuegosFiltrados);
     }
 
 
