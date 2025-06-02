@@ -93,7 +93,7 @@ public class VideoJuego {
     public String toString() {
         return "VideoJuego{" +
                 "id='" + id + '\'' +
-                ", id_consola='" + id_consola + '\'' +
+                ", Consola ='" + nombre_consola + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", genero=" + genero +
                 ", desarrollador='" + desarrollador + '\'' +

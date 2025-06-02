@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.VBox;
 
 import java.sql.SQLException;
@@ -27,6 +28,7 @@ public class HelloController implements Initializable {
     List<VideoJuego> filtroGenero = FXCollections.observableArrayList();
     private int tipoDeFiltro = 0;
     String seleccionFiltro;
+    private Usuario usuarioAutenticado;  // Variable para almacenar el usuario de inicio de sesion
 
 //PANELES DE LA APP
     @FXML
@@ -74,7 +76,7 @@ public class HelloController implements Initializable {
     @FXML
     private TextField TextField_InicioSesionUsuario;
     @FXML
-    private TextField TextField_InicioSesionContraseña;
+    private PasswordField TextField_InicioSesionContraseña;
 
 //VENTANA DE REGISTRO
     @FXML
@@ -134,6 +136,13 @@ public class HelloController implements Initializable {
     @FXML
     private Button SaveValoracion;
 
+    //Panel Menu Usuario
+    @FXML
+    private Button btn_NuevaValoracion;
+    @FXML
+    private Button btn_VerValoraciones;
+    @FXML
+    private Button btnAddVideoJuego;
 
 //ACCIONES DE BOTONES
     //Navegacion entre paneles
@@ -166,7 +175,7 @@ public class HelloController implements Initializable {
         selectPanelVisible(6);
         seleccionFiltro = SeleccionFiltro.getValue();
         if (tipoDeFiltro == 0){
-            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosConsola(Consolas.valueOf(SeleccionFiltro.getValue()))));
+            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosConsola(seleccionFiltro)));
         }else if (tipoDeFiltro == 1){
             ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosGenero(GeneroV.valueOf(SeleccionFiltro.getValue()))));
         }
@@ -321,24 +330,18 @@ public class HelloController implements Initializable {
         // Obtener la lista de usuarios de la base de datos
         List <Usuario> usuarios = miData.getUsuarios();
 
-        // Buscar coincidencia de usuario y contraseña
-        boolean credencialesValidas = false;
-        Usuario usuarioAutenticado = null;
 
         for (Usuario usuario : usuarios) {
             if (usuario.getUsuario().equals(usuarioInt) &&
                     usuario.getContrasena().equals(password)) {
-                credencialesValidas = true;
-                usuarioAutenticado = usuario;
-                break;
+                this.usuarioAutenticado = usuario;  // Almacena el usuario
+                selectPanelVisible(3);
+                return; //Sale del metodo al encontrar una coincidencia
             }
         }
-        if(credencialesValidas == true) {
-            selectPanelVisible(3);
-        }else {
-            showAlert(Alert.AlertType.ERROR, "Error", "Usuario o contraseña incorrectos");
-            cleanLogIn();
-        }
+        // Si llega aquí, las credenciales son inválidas
+        showAlert(Alert.AlertType.ERROR, "Error", "Usuario o contraseña incorrectos");
+        cleanLogIn();
 
     }
     //Mostrar alertas
@@ -371,10 +374,33 @@ public class HelloController implements Initializable {
         });
     }
 
-    //Boton del menu de usuario a mejores valorados
+    //Botones del menu de usuario
     @FXML
     private void onBtn_MostrarJuegos(){
         selectPanelVisible(4);
+    }
+    @FXML
+    private void onbtn_NuevaValoracion(){
+        selectPanelVisible(7);
+        ListViewVidValo.setItems(FXCollections.observableArrayList(miData.getVideojuegos()));
+        puntuacionVa.setPromptText("1-100");
+    }
+
+    //Boton guardar nueva consulta
+    @FXML
+    private void onSaveValoracion(){
+        VideoJuego selectV = ListViewVidValo.getSelectionModel().getSelectedItem();
+        // Convertir el texto de puntuación a int
+        int puntuacion = Integer.parseInt(puntuacionVa.getText());
+        Valoracion_Usuario valoracion = new Valoracion_Usuario(
+            selectV.getId(),
+            usuarioAutenticado.getId(),
+            puntuacion,
+            ComentarioValo.getText()
+        );
+        miData.valoracionUsuario(valoracion);
+        selectPanelVisible(3);
+        cleanValoracion();
     }
 
     //METODOS DE LIMPIEZA DE FORMULARIO
@@ -394,6 +420,10 @@ public class HelloController implements Initializable {
     private void cleanLogIn(){
         TextField_InicioSesionUsuario.setText("");
         TextField_InicioSesionContraseña.setText("");
+    }
+    private void cleanValoracion(){
+        puntuacionVa.setText("");
+        ComentarioValo.setText("");
     }
 
     //METODO PARA SELECCION DE PANELES

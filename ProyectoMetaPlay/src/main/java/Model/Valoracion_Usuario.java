@@ -20,6 +20,13 @@ public class Valoracion_Usuario {
         this.fechaValoracion = LocalDate.now();
     }
 
+    public Valoracion_Usuario(int idVideojuego, int idUsuario, int puntuacion, String comentario) {
+        this.idVideojuego = idVideojuego;
+        this.idUsuario = idUsuario;
+        this.puntuacion = puntuacion;
+        this.comentario = comentario;
+    }
+
     public int getId() {
         return id;
     }

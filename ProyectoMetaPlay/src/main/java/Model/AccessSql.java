@@ -234,19 +234,17 @@ public class AccessSql {
 
 
     //insertar una valoracion del usuario
-    public static void valoracionUsuario(Valoracion_Usuario valoracion_usuario) {
+    public void valoracionUsuario(Valoracion_Usuario valoracion_usuario) {
 
-        String sql = "INSERT INTO Valoracion_Usuario (ID, Videojuego_ID, Usuario_ID, Puntuacion, Comentario, Fecha_valoracion) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Valoracion_Usuario ( Videojuego_ID, Usuario_ID, Puntuacion, Comentario) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setInt(1, valoracion_usuario.getId());
-            statement.setInt(2, valoracion_usuario.getIdVideojuego());
-            statement.setInt(3, valoracion_usuario.getIdUsuario());
-            statement.setInt(4, valoracion_usuario.getPuntuacion());
-            statement.setString(5, valoracion_usuario.getComentario());
-            statement.setDate(6, java.sql.Date.valueOf(valoracion_usuario.getFechaValoracion()));
+            statement.setInt(1, valoracion_usuario.getIdVideojuego());
+            statement.setInt(2, valoracion_usuario.getIdUsuario());
+            statement.setInt(3, valoracion_usuario.getPuntuacion());
+            statement.setString(4, valoracion_usuario.getComentario());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -314,7 +312,7 @@ public class AccessSql {
 
     //Encontrar en la lista los videojuegos de una consola exacta (filtro por consola)
 
-    public List<VideoJuego> getVideoJuegosConsola(Consola consola) {
+    public List<VideoJuego> getVideoJuegosConsola(String consola) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
         String sql = "SELECT ID, Consola_Nombre, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Consola_Nombre=?";

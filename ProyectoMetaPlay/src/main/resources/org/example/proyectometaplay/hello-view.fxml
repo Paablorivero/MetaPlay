@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -396,7 +397,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_MenuDeUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -530,7 +531,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="MenuEmpresa" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_MenuDeUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -542,7 +543,7 @@
                         <Insets left="50.0" top="15.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Menu empresa">
+                  <Label text="Menu Usuario">
                      <font>
                         <Font name="Magneto Bold" size="52.0" />
                      </font>
@@ -587,12 +588,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_filtrarConsola1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
+                        <Button fx:id="btn_filtrarConsola1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarConsolaButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_filtrarGenero1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
+                        <Button fx:id="btn_filtrarGenero1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarGeneroButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -621,7 +622,7 @@
                   </Separator>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_MostrarJuegos21" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Nueva valoracion">
+                        <Button fx:id="btn_NuevaValoracion" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onbtn_NuevaValoracion" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Nueva valoracion">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -632,12 +633,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_filtrarConsola11" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
+                        <Button fx:id="btn_VerValoraciones" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_filtrarGenero11" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Añadir juego&#10;">
+                        <Button fx:id="btnAddVideoJuego" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Añadir juego&#10;">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -768,7 +769,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextArea>
-                  <Button fx:id="SaveValoracion" mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Guardar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="SaveValoracion" mnemonicParsing="false" onMouseClicked="#onSaveValoracion" prefHeight="58.0" prefWidth="80.0" text="Guardar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets top="40.0" />
                      </GridPane.margin>
@@ -931,14 +932,11 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="TextField_InicioSesionContraseña" translateY="4.0">
+                        <PasswordField fx:id="TextField_InicioSesionContraseña">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextField>
+                        </PasswordField>
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
