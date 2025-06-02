@@ -22,14 +22,14 @@ public class AccessSql {
             while(dataSet.next()){
 
                 int id = dataSet.getInt(1);
-                int id_consola = dataSet.getInt(2);
+                String nombre_consola = dataSet.getString(2);
                 String titulo = dataSet.getString(3);
                 GeneroV genero = GeneroV.valueOf(dataSet.getString(4));
                 String desarrollador = dataSet.getString(5);
                 double precio = dataSet.getDouble(6);
 
 
-                VideoJuego v = new VideoJuego(id, id_consola, titulo, genero, desarrollador, precio);
+                VideoJuego v = new VideoJuego(id, nombre_consola, titulo, genero, desarrollador, precio);
                 videojuegos.add(v);
             }
 
@@ -154,13 +154,13 @@ public class AccessSql {
     //registrar un videojuego
     public static void registrarVideojuego(VideoJuego juego) {
 
-        String sql = "INSERT INTO Videojuegos (ID, Consola_ID, Nombre, Genero, Desarrollador, Precio) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Videojuegos (ID, Consola_Nombre, Nombre, Genero, Desarrollador, Precio) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, juego.getId());
-            statement.setInt(2, juego.getId_consola());
+            statement.setString(2, juego.getNombre_Consola());
             statement.setString(3, juego.getNombre());
             statement.setString(4, juego.getGenero().toString());
             statement.setString(5, juego.getDesarrollador().toString());
@@ -295,7 +295,7 @@ public class AccessSql {
                 while (resultSet.next()) {
                     VideoJuego juego = new VideoJuego();
                     juego.setId(resultSet.getInt("ID"));
-                    juego.setId_consola(resultSet.getInt("Consola_ID"));
+                    juego.setNombre_consola(resultSet.getString("Consola_ID"));
                     juego.setNombre(resultSet.getString("Nombre"));
                     juego.setGenero(GeneroV.fromString(resultSet.getString("Genero")));
                     juego.setDesarrollador(resultSet.getString("Desarrollador"));
@@ -317,7 +317,7 @@ public class AccessSql {
     public List<VideoJuego> getVideoJuegosConsola(Consola consola) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
-        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Consola_ID=?";
+        String sql = "SELECT ID, Consola_Nombre, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Consola_Nombre=?";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -328,7 +328,7 @@ public class AccessSql {
                 while (resultSet.next()) {
                     VideoJuego juego = new VideoJuego();
                     juego.setId(resultSet.getInt("ID"));
-                    juego.setId_consola(resultSet.getInt("Consola_ID"));
+                    juego.setNombre_consola(resultSet.getString("Consola_Nombre"));
                     juego.setNombre(resultSet.getString("Nombre"));
                     juego.setGenero(GeneroV.fromString(resultSet.getString("Genero")));
                     juego.setDesarrollador(resultSet.getString("Desarrollador"));
@@ -385,6 +385,11 @@ public class AccessSql {
 
         return mejoresJuegos;
     }
+
+
+
+
+
 
 
 

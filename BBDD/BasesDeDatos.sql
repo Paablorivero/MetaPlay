@@ -21,8 +21,7 @@ grant all privileges on schema_bbdd.Valoracion_Empresa to developer@localhost;
 
 -- Tabla Consola
 CREATE TABLE Consola (
-    ID 						INT AUTO_INCREMENT PRIMARY KEY,
-    Nombre 					VARCHAR(50) NOT NULL,
+    Nombre 					VARCHAR(50) NOT NULL PRIMARY KEY,
     Empresa_desarrolladora 	VARCHAR(100) NOT NULL
 );
 
@@ -48,12 +47,12 @@ CREATE TABLE Empresa (
 -- Tabla Videojuegos
 CREATE TABLE Videojuegos (
     ID 						INT AUTO_INCREMENT PRIMARY KEY,
-    Consola_ID 				INT NOT NULL,
+    Consola_Nombre 			VARCHAR(100) NOT NULL,
     Nombre 					VARCHAR(100) NOT NULL,
     Genero 					ENUM('ACCION', 'AVENTURA', 'CATASTROFE', 'CIENCIA_FICCION', 'COMEDIA', 'DOCUMENTALES', 'DRAMA', 'FANTASIA'),
     Desarrollador 			VARCHAR(100) NOT NULL,
     Precio 					DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (Consola_ID) REFERENCES Consola(ID)
+    FOREIGN KEY (Consola_Nombre) REFERENCES Consola(Nombre)
 );
 
 -- Tabla Valoracion_usuario
@@ -103,12 +102,12 @@ INSERT INTO Empresa (CIF, Nombre, Contasena, Correo) VALUES
 ('A123456784', 'Square Enix', 'squarepass', 'info@squareenix.com'),
 ('A123456785', 'Capcom', 'cappass', 'contact@capcom.com');
 
-INSERT INTO Videojuegos (Consola_ID, Nombre, Genero, Desarrollador, Precio) VALUES 
-(1, 'God of War Ragnarök', 'ACCION', 'Santa Monica Studio', 69.99),
-(2, 'Halo Infinite', 'CIENCIA_FICCION', '343 Industries', 59.99),
-(3, 'The Legend of Zelda: Breath of the Wild', 'AVENTURA', 'Nintendo EPD', 59.99),
-(4, 'Cyberpunk 2077', 'CIENCIA_FICCION', 'CD Projekt Red', 49.99),
-(5, 'The Last of Us Part II', 'DRAMA', 'Naughty Dog', 39.99);
+INSERT INTO Videojuegos (Consola_Nombre, Nombre, Genero, Desarrollador, Precio) VALUES 
+('PlayStation 5', 'God of War Ragnarök', 'ACCION', 'Santa Monica Studio', 69.99),
+('Xbox Series X', 'Halo Infinite', 'CIENCIA_FICCION', '343 Industries', 59.99),
+('PlayStation 5', 'The Legend of Zelda: Breath of the Wild', 'AVENTURA', 'Nintendo EPD', 59.99),
+('Nintendo Switch','Cyberpunk 2077', 'CIENCIA_FICCION', 'CD Projekt Red', 49.99),
+('PC', 'The Last of Us Part II', 'DRAMA', 'Naughty Dog', 39.99);
 
 INSERT INTO Valoracion_Usuario (Videojuego_ID, Usuario_ID, Puntuacion, Comentario) VALUES 
 (1, 1, 95, 'Increíble experiencia de juego, gráficos asombrosos'),
@@ -126,19 +125,19 @@ INSERT INTO Valoracion_Empresa (Videojuego_ID, Empresa_CIF, Puntuacion, Comentar
 
 
 -- CREATE VIEW Valoracion_Global AS
-SELECT 
-    v.ID AS Videojuego_ID,
-    v.Nombre AS Nombre_Videojuego,
-    COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios,
-    COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas,
-    (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global
-FROM 
-    Videojuegos v
-LEFT JOIN 
-    Valoracion_Usuario u ON v.ID = u.Videojuego_ID
-LEFT JOIN 
-    Valoracion_Empresa e ON v.ID = e.Videojuego_ID
-GROUP BY 
-    v.ID, v.Nombre;
+-- SELECT 
+--     v.ID AS Videojuego_ID,
+--     v.Nombre AS Nombre_Videojuego,
+--     COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios,
+--     COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas,
+--     (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global
+-- FROM 
+--     Videojuegos v
+-- LEFT JOIN 
+--     Valoracion_Usuario u ON v.ID = u.Videojuego_ID
+-- LEFT JOIN 
+--     Valoracion_Empresa e ON v.ID = e.Videojuego_ID
+-- GROUP BY 
+--     v.ID, v.Nombre;
 
 
