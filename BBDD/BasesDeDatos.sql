@@ -141,3 +141,5 @@ INSERT INTO Valoracion_Empresa (Videojuego_ID, Empresa_CIF, Puntuacion, Comentar
 --     v.ID, v.Nombre;
 
 
+
+
