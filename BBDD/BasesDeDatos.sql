@@ -4,6 +4,7 @@ USE schema_bbdd;
 
 drop user if exists developer@localhost;
 create user developer@localhost identified by 'developer';
+<<<<<<< HEAD
 
 
 grant all privileges on schema_bbdd.Consola to developer@localhost;
@@ -18,6 +19,8 @@ grant all privileges on schema_bbdd.Valoracion_Usuario to developer@localhost;
 
 grant all privileges on schema_bbdd.Valoracion_Empresa to developer@localhost;
 
+=======
+>>>>>>> main
 
 -- Tabla Consola
 CREATE TABLE Consola (
