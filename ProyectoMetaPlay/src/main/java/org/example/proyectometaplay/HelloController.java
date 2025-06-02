@@ -51,7 +51,8 @@ public class HelloController implements Initializable {
     private VBox Vbox_BusquedaFiltrada;
 
     @FXML
-    private VBox Vbox_SeleccionJuego;
+    private VBox AddValoracion;
+
 
 //PAGINA PRINCIPAL
     @FXML
@@ -120,6 +121,19 @@ public class HelloController implements Initializable {
 //VENTANA BUSQUEDA FILTRADA
     @FXML
     private ListView<VideoJuego> ListView_JuegosFiltrados;
+    @FXML
+    private Button Btn_BusquedaFiltrada_VolverInicio;
+
+    //Panel add Valoracion
+    @FXML
+    private TextField puntuacionVa;
+    @FXML
+    private TextArea ComentarioValo;
+    @FXML
+    private ListView<VideoJuego> ListViewVidValo;
+    @FXML
+    private Button SaveValoracion;
+
 
 //ACCIONES DE BOTONES
     //Navegacion entre paneles
@@ -144,18 +158,25 @@ public class HelloController implements Initializable {
     protected void onEntrarMenuFiltrarGeneroButton(ActionEvent event){
         selectPanelVisible(5);
         FiltroGenero();
-        seleccionFiltro = SeleccionFiltro.getValue();
-        ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosGenero(GeneroV.valueOf(SeleccionFiltro.getValue()))));
         tipoDeFiltro = 1;
     }
-
+    //Boton de filtrar
     @FXML
     protected void onFiltrarButton(ActionEvent event){
         selectPanelVisible(6);
-        VideojuegosFiltrados.addAll(filtroGenero);
-        ListView_JuegosFiltrados.setItems(VideojuegosFiltrados);
+        seleccionFiltro = SeleccionFiltro.getValue();
+        if (tipoDeFiltro == 0){
+            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosConsola(Consolas.valueOf(SeleccionFiltro.getValue()))));
+        }else if (tipoDeFiltro == 1){
+            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosGenero(GeneroV.valueOf(SeleccionFiltro.getValue()))));
+        }
     }
-
+    //Boton para atras de busqueda filtrada para que se limpie las listview
+    @FXML
+    protected void Btn_BusquedaFiltrada_VolverInicio(ActionEvent event){
+        ListView_JuegosFiltrados.setItems(null);
+        selectPanelVisible(0);
+    }
 
 
 //METODO INICIALIZADOR
@@ -387,7 +408,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
 
             case 1:
@@ -398,7 +419,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
 
             case 2:
@@ -409,7 +430,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
             case 3:
                 VBox_MenuPrincipal.setVisible(false);
@@ -419,7 +440,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
             case 4:
                 VBox_MenuPrincipal.setVisible(false);
@@ -429,7 +450,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(true);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
             case 5:
                 VBox_MenuPrincipal.setVisible(false);
@@ -439,7 +460,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(true);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
             case 6:
                 VBox_MenuPrincipal.setVisible(false);
@@ -449,7 +470,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(true);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
                 break;
             case 7:
                 VBox_MenuPrincipal.setVisible(false);
@@ -459,7 +480,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(true);
+                AddValoracion.setVisible(true);
                 break;
             default:
                 VBox_MenuPrincipal.setVisible(true);
@@ -469,7 +490,7 @@ public class HelloController implements Initializable {
                 Vbox_MejorValorados.setVisible(false);
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
-                Vbox_SeleccionJuego.setVisible(false);
+                AddValoracion.setVisible(false);
         }
     }
 

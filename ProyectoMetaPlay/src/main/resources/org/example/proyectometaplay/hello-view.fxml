@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -703,7 +702,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="AddValoracion" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="AddValoracion" prefHeight="480.0" prefWidth="640.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -733,15 +732,15 @@
                   <Insets left="60.0" />
                </VBox.margin>
             </Separator>
-            <GridPane prefHeight="262.0" prefWidth="640.0">
+            <GridPane prefHeight="269.0" prefWidth="640.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="172.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.0" minWidth="10.0" prefWidth="468.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="57.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="114.0" minHeight="0.0" prefHeight="114.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="31.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -761,15 +760,7 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Slider blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets right="40.0" top="20.0" />
-                     </GridPane.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Slider>
-                  <TextArea prefHeight="52.0" prefWidth="394.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextArea fx:id="ComentarioValo" maxWidth="-Infinity" prefHeight="89.0" prefWidth="441.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="40.0" />
                      </GridPane.margin>
@@ -777,7 +768,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextArea>
-                  <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Guardar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button fx:id="SaveValoracion" mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Guardar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets top="40.0" />
                      </GridPane.margin>
@@ -785,6 +776,16 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="46.0" text="VideoJuego" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <ListView fx:id="ListViewVidValo" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="puntuacionVa" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" />
                </children>
                <VBox.margin>
                   <Insets top="40.0" />
@@ -968,7 +969,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="VboxFiltrarJuego" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0">
+      <VBox fx:id="VboxFiltrarJuego" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -1047,7 +1048,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onInicioButton">
+                  <Button mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio">
                      <graphic>
                         <ImageView fx:id="btn_atras_BusquedaFiltrada" fitHeight="20.0" fitWidth="20.0">
                            <image>
@@ -1093,7 +1094,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </ListView>
-            <Button fx:id="Btn_BusquedaFiltrada_VolverInicio" mnemonicParsing="false" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
+            <Button fx:id="Btn_BusquedaFiltrada_VolverInicio" mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
                <VBox.margin>
                   <Insets left="280.0" top="10.0" />
                </VBox.margin>
