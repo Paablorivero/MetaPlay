@@ -169,6 +169,11 @@ public class HelloController implements Initializable {
         FiltroGenero();
         tipoDeFiltro = 1;
     }
+
+    //Le damos un formato de celdas al listview Para que salga bien los mejores valorados
+
+
+
     //Boton de filtrar
     @FXML
     protected void onFiltrarButton(ActionEvent event){
@@ -180,6 +185,9 @@ public class HelloController implements Initializable {
             ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosGenero(GeneroV.valueOf(SeleccionFiltro.getValue()))));
         }
     }
+
+
+
     //Boton para atras de busqueda filtrada para que se limpie las listview
     @FXML
     protected void Btn_BusquedaFiltrada_VolverInicio(ActionEvent event){
@@ -247,11 +255,37 @@ public class HelloController implements Initializable {
                 super.updateItem(videojuego, empty);
                 if (empty || videojuego == null) {
                     setText(null);
+                    setGraphic(null); // Limpiar gráficos si los hay
                 } else {
-                    setText(String.format("ID: %d, Nombre: %s, Puntuación Global: %.2f",
+                    setText(String.format("ID: %d | Nombre: %s | Puntuación Global: %.2f",
                             videojuego.getId(),
                             videojuego.getNombre(),
                             videojuego.getPuntuacionGlobal()));
+                }
+            }
+        });
+
+        //Le damos un formato de celdas al listview Para que salga bien con las valoraciones
+        ListView_JuegosFiltrados.setCellFactory(lv -> new ListCell<VideoJuego>() {
+            @Override
+            protected void updateItem(VideoJuego videojuego, boolean empty) {
+                super.updateItem(videojuego, empty);
+                if (empty || videojuego == null) {
+                    setText(null);
+                    setGraphic(null); // Limpiar gráficos si los hay
+                } else {
+                    // Formatear el texto con los datos del videojuego
+                    String texto = String.format(
+                            "ID: %d | Nombre: %s | Género: %s | Consola: %s | Precio: %.2f | Desarrollador: %s | Puntuación Global: %.2f",
+                            videojuego.getId(),
+                            videojuego.getNombre(),
+                            videojuego.getGenero(),
+                            videojuego.getNombre_Consola(),
+                            videojuego.getPrecio(),
+                            videojuego.getDesarrollador(),
+                            videojuego.getPuntuacionGlobal()
+                    );
+                    setText(texto);
                 }
             }
         });

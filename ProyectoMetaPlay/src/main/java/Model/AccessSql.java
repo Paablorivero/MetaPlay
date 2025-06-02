@@ -282,7 +282,22 @@ public class AccessSql {
     public List<VideoJuego> getVideoJuegosGenero(GeneroV genero) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
-        String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Genero=?";
+        String sql = "SELECT " +
+                "    Videojuegos.ID," +
+                "    Videojuegos.Consola_Nombre," +
+                "    Videojuegos.Nombre," +
+                "    Videojuegos.Genero," +
+                "    Videojuegos.Desarrollador," +
+                "    Videojuegos.Precio," +
+                "    COALESCE(AVG(Valoracion_Usuario.Puntuacion), 0.0) AS PuntuacionGlobal " + // Si no hay valoraciones, devuelve 0.0
+                "FROM " +
+                "    Videojuegos " +
+                "LEFT JOIN " +
+                "    Valoracion_Usuario  ON Videojuegos.ID = Valoracion_Usuario.Videojuego_ID  " + // Ajusta el nombre de la columna de relación
+                "WHERE " +
+                "    Videojuegos.Genero = ?" +
+                "GROUP BY " +
+                "    Videojuegos.ID, Videojuegos.Consola_Nombre, Videojuegos.Nombre, Videojuegos.Genero, Videojuegos.Desarrollador, Videojuegos.Precio";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -292,12 +307,13 @@ public class AccessSql {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     VideoJuego juego = new VideoJuego();
-                    juego.setId(resultSet.getInt("ID"));
-                    juego.setNombre_consola(resultSet.getString("Consola_ID"));
-                    juego.setNombre(resultSet.getString("Nombre"));
-                    juego.setGenero(GeneroV.fromString(resultSet.getString("Genero")));
-                    juego.setDesarrollador(resultSet.getString("Desarrollador"));
-                    juego.setPrecio(resultSet.getDouble("Precio"));
+                    juego.setId(resultSet.getInt(1));
+                    juego.setNombre_consola(resultSet.getString(2));
+                    juego.setNombre(resultSet.getString(3));
+                    juego.setGenero(GeneroV.fromString(resultSet.getString(4)));
+                    juego.setDesarrollador(resultSet.getString(5));
+                    juego.setPrecio(resultSet.getDouble(6));
+                    juego.setPuntuacionGlobal(resultSet.getDouble(7));
                     videoJuegos.add(juego);
 
                 }
@@ -315,7 +331,22 @@ public class AccessSql {
     public List<VideoJuego> getVideoJuegosConsola(String consola) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
-        String sql = "SELECT ID, Consola_Nombre, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Consola_Nombre=?";
+        String sql = "SELECT " +
+                "    Videojuegos.ID," +
+                "    Videojuegos.Consola_Nombre," +
+                "    Videojuegos.Nombre," +
+                "    Videojuegos.Genero," +
+                "    Videojuegos.Desarrollador," +
+                "    Videojuegos.Precio," +
+                "    COALESCE(AVG(Valoracion_Usuario.Puntuacion), 0.0) AS PuntuacionGlobal " + // Si no hay valoraciones, devuelve 0.0
+                "FROM " +
+                "    Videojuegos " +
+                "LEFT JOIN " +
+                "    Valoracion_Usuario  ON Videojuegos.ID = Valoracion_Usuario.Videojuego_ID  " + // Ajusta el nombre de la columna de relación
+                "WHERE " +
+                "    Videojuegos.Consola_Nombre = ?" +
+                "GROUP BY " +
+                "    Videojuegos.ID, Videojuegos.Consola_Nombre, Videojuegos.Nombre, Videojuegos.Genero, Videojuegos.Desarrollador, Videojuegos.Precio";
 
         try (Connection connection = DataBaseSql.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -325,12 +356,13 @@ public class AccessSql {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     VideoJuego juego = new VideoJuego();
-                    juego.setId(resultSet.getInt("ID"));
-                    juego.setNombre_consola(resultSet.getString("Consola_Nombre"));
-                    juego.setNombre(resultSet.getString("Nombre"));
-                    juego.setGenero(GeneroV.fromString(resultSet.getString("Genero")));
-                    juego.setDesarrollador(resultSet.getString("Desarrollador"));
-                    juego.setPrecio(resultSet.getDouble("Precio"));
+                    juego.setId(resultSet.getInt(1));
+                    juego.setNombre_consola(resultSet.getString(2));
+                    juego.setNombre(resultSet.getString(3));
+                    juego.setGenero(GeneroV.fromString(resultSet.getString(4)));
+                    juego.setDesarrollador(resultSet.getString(5));
+                    juego.setPrecio(resultSet.getDouble(6));
+                    juego.setPuntuacionGlobal(resultSet.getDouble(7));
                     videoJuegos.add(juego);
 
                 }
