@@ -25,9 +25,9 @@ public class HelloController implements Initializable {
 //DECLARACION DE VARIABLES
     private static AccessSql miData = new AccessSql();
     private ObservableList<VideoJuego> VideojuegosFiltrados = FXCollections.observableArrayList();
-    List<VideoJuego> filtroGenero = FXCollections.observableArrayList();
+    private List<VideoJuego> filtroGenero = FXCollections.observableArrayList();
     private int tipoDeFiltro = 0;
-    String seleccionFiltro;
+    private String seleccionFiltro;
     private Usuario usuarioAutenticado;  // Variable para almacenar el usuario de inicio de sesion
 
 //PANELES DE LA APP
@@ -55,36 +55,16 @@ public class HelloController implements Initializable {
     @FXML
     private VBox AddValoracion;
 
-
-//PAGINA PRINCIPAL
     @FXML
-    private Button Btn_IniciarSesion;
-    @FXML
-    private Button btn_MostrarJuegos;
-    @FXML
-    private Button btn_filtrarConsola;
-    @FXML
-    private Button btn_filtrarGenero;
+    private VBox MisValoraciones;
 
 //INICIO DE SESION
-    @FXML
-    private Button Btn_Registrarse;
-    @FXML
-    private Button Btn_Acceder;
-    @FXML
-    private Button Btn_atras_InicioSesion;
     @FXML
     private TextField TextField_InicioSesionUsuario;
     @FXML
     private PasswordField TextField_InicioSesionContraseña;
 
 //VENTANA DE REGISTRO
-    @FXML
-    private Button Btn_RegistrarUsuario;
-    @FXML
-    private Button Btn_RegistrarEmpresa;
-    @FXML
-    private Button btn_atras_Registrarse;
     @FXML
     private TextField TextField_RegistroNombre;
     @FXML
@@ -99,10 +79,6 @@ public class HelloController implements Initializable {
     private TextField TextField_RegistroNacimiento;
 
 //VENTANA MEJOR VALORADOS
-    @FXML
-    private Button Btn_VolverInicio;
-    @FXML
-    private Button btn_atras_MejorValorados;
     @FXML
     private ListView<VideoJuego> ListView_MejorValorados;
 
@@ -123,8 +99,6 @@ public class HelloController implements Initializable {
 //VENTANA BUSQUEDA FILTRADA
     @FXML
     private ListView<VideoJuego> ListView_JuegosFiltrados;
-    @FXML
-    private Button Btn_BusquedaFiltrada_VolverInicio;
 
     //Panel add Valoracion
     @FXML
@@ -144,6 +118,9 @@ public class HelloController implements Initializable {
     @FXML
     private Button btnAddVideoJuego;
 
+    //Panel Valoraciones
+    @FXML
+    private ListView<Valoracion_Usuario> ListView_ValoracionesUsuario;
 //ACCIONES DE BOTONES
     //Navegacion entre paneles
     @FXML
@@ -153,6 +130,7 @@ public class HelloController implements Initializable {
         limpiarFormulario();
         cleanLogIn();
         SeleccionFiltro.getItems().clear();
+        ListView_ValoracionesUsuario.setItems(null);
     }
 
     @FXML
@@ -170,22 +148,37 @@ public class HelloController implements Initializable {
         tipoDeFiltro = 1;
     }
 
-    //Le damos un formato de celdas al listview Para que salga bien los mejores valorados
-
-
-
     //Boton de filtrar
     @FXML
     protected void onFiltrarButton(ActionEvent event){
         selectPanelVisible(6);
         seleccionFiltro = SeleccionFiltro.getValue();
-        if (tipoDeFiltro == 0){
-            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosConsola(seleccionFiltro)));
-        }else if (tipoDeFiltro == 1){
-            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(miData.getVideoJuegosGenero(GeneroV.valueOf(SeleccionFiltro.getValue()))));
-        }
-    }
 
+        // Verificar que se haya seleccionado algo válido
+        if (seleccionFiltro == null ||
+                seleccionFiltro.equals("Seleccione Consola") ||
+                seleccionFiltro.equals("Seleccione Genero")) {
+
+            // Mostrar alerta si no se seleccionó nada válido
+            showAlert(Alert.AlertType.WARNING, "Advertencia", "Por favor seleccione una opción válida");
+            return;
+        }
+
+        if (tipoDeFiltro == 0){ // Filtro por consola
+            ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(
+                    miData.getVideoJuegosConsola(seleccionFiltro)));
+        } else if (tipoDeFiltro == 1){ // Filtro por género
+            try {
+                // Convertir el String a GeneroV usando el método fromString
+                GeneroV genero = GeneroV.fromString(seleccionFiltro);
+                ListView_JuegosFiltrados.setItems(FXCollections.observableArrayList(
+                        miData.getVideoJuegosGenero(genero)));
+            } catch (IllegalArgumentException e) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Género no válido: " + seleccionFiltro);
+            }
+        }
+        SeleccionFiltro.getItems().clear();
+    }
 
 
     //Boton para atras de busqueda filtrada para que se limpie las listview
@@ -195,6 +188,52 @@ public class HelloController implements Initializable {
         selectPanelVisible(0);
     }
 
+    @FXML
+    protected void onVerValoraciones(ActionEvent event){
+        selectPanelVisible(8);
+        cargarValoracionesUsuario();
+    }
+
+    private void cargarValoracionesUsuario() {
+        if (usuarioAutenticado != null) {
+            List<Valoracion_Usuario> valoraciones = miData.getValoracionesPorUsuario(usuarioAutenticado.getId());
+            ListView_ValoracionesUsuario.setItems(FXCollections.observableArrayList(valoraciones));
+
+            // Configurar el formato de celdas para mostrar las valoraciones de forma legible
+            ListView_ValoracionesUsuario.setCellFactory(listView -> new ListCell<Valoracion_Usuario>() {
+                @Override
+                protected void updateItem(Valoracion_Usuario valoracion, boolean empty) {
+                    super.updateItem(valoracion, empty);
+                    if (empty || valoracion == null) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        // Obtener el nombre del videojuego para mostrarlo
+                        String nombreJuego = obtenerNombreVideojuego(valoracion.getIdVideojuego());
+
+                        String texto = String.format(
+                                "Juego: %s | Puntuación: %d/100 | Comentario: %s | Fecha: %s",
+                                nombreJuego,
+                                valoracion.getPuntuacion(),
+                                valoracion.getComentario(),
+                                valoracion.getFechaValoracion().toString()
+                        );
+                        setText(texto);
+                    }
+                }
+            });
+        }
+    }
+
+    private String obtenerNombreVideojuego(int idVideojuego) {
+        List<VideoJuego> videojuegos = miData.getVideojuegos();
+        for (VideoJuego juego : videojuegos) {
+            if (juego.getId() == idVideojuego) {
+                return juego.getNombre();
+            }
+        }
+        return "Juego no encontrado";
+    }
 
 //METODO INICIALIZADOR
     @Override
@@ -412,6 +451,11 @@ public class HelloController implements Initializable {
     @FXML
     private void onBtn_MostrarJuegos(){
         selectPanelVisible(4);
+        try {
+            ListView_MejorValorados.setItems(FXCollections.observableList(miData.obtenerMejoresVideojuegos()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
     private void onbtn_NuevaValoracion(){
@@ -473,6 +517,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
 
             case 1:
@@ -484,6 +529,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
 
             case 2:
@@ -495,6 +541,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
             case 3:
                 VBox_MenuPrincipal.setVisible(false);
@@ -505,6 +552,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
             case 4:
                 VBox_MenuPrincipal.setVisible(false);
@@ -515,6 +563,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
             case 5:
                 VBox_MenuPrincipal.setVisible(false);
@@ -525,6 +574,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(true);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
             case 6:
                 VBox_MenuPrincipal.setVisible(false);
@@ -535,6 +585,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(true);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
                 break;
             case 7:
                 VBox_MenuPrincipal.setVisible(false);
@@ -545,7 +596,21 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(true);
+                MisValoraciones.setVisible(false);
                 break;
+
+            case 8:
+                VBox_MenuPrincipal.setVisible(false);
+                VBox_InicioSesion.setVisible(false);
+                Vbox_Registro.setVisible(false);
+                Vbox_MenuDeUsuario.setVisible(false);
+                Vbox_MejorValorados.setVisible(false);
+                VboxFiltrarJuego.setVisible(false);
+                Vbox_BusquedaFiltrada.setVisible(false);
+                AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(true);
+                break;
+
             default:
                 VBox_MenuPrincipal.setVisible(true);
                 VBox_InicioSesion.setVisible(false);
@@ -555,6 +620,7 @@ public class HelloController implements Initializable {
                 VboxFiltrarJuego.setVisible(false);
                 Vbox_BusquedaFiltrada.setVisible(false);
                 AddValoracion.setVisible(false);
+                MisValoraciones.setVisible(false);
         }
     }
 

@@ -375,13 +375,6 @@ public class AccessSql {
         return videoJuegos;
     }
 
-
-
-    
-
-
-
-
     public List<VideoJuego> obtenerMejoresVideojuegos() throws SQLException {
         List<VideoJuego> mejoresJuegos = new ArrayList<>();
 
@@ -416,6 +409,39 @@ public class AccessSql {
         return mejoresJuegos;
     }
 
+    //obtener valoraciones de un usuario específico
+    public List<Valoracion_Usuario> getValoracionesPorUsuario(int idUsuario) {
+        List<Valoracion_Usuario> valoracionesUsuario = new LinkedList<>();
+
+        String sql = "SELECT vu.ID, vu.Videojuego_ID, vu.Usuario_ID, vu.Puntuacion, vu.Comentario, vu.Fecha_valoracion " +
+                "FROM Valoracion_Usuario vu " +
+                "WHERE vu.Usuario_ID = ? " +
+                "ORDER BY vu.Fecha_valoracion DESC";
+
+        try (Connection connection = DataBaseSql.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, idUsuario);
+
+            try (ResultSet dataSet = statement.executeQuery()) {
+                while(dataSet.next()){
+                    int id = dataSet.getInt(1);
+                    int idVideojuego = dataSet.getInt(2);
+                    int idUsuarioVal = dataSet.getInt(3);
+                    int puntuacion = dataSet.getInt(4);
+                    String comentario = dataSet.getString(5);
+                    LocalDate fechaValoracion = dataSet.getTimestamp(6).toLocalDateTime().toLocalDate();
+
+                    Valoracion_Usuario vu = new Valoracion_Usuario(id, idVideojuego, idUsuarioVal, puntuacion, comentario, fechaValoracion);
+                    valoracionesUsuario.add(vu);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener valoraciones del usuario: " + e.getMessage());
+        }
+        return valoracionesUsuario;
+    }
 
 
 

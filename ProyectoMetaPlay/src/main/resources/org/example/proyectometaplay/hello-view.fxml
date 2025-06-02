@@ -23,22 +23,22 @@
 <AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectometaplay.HelloController">
    <children>
 
-      <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0" style="-fx-background-color: #E1E1E1;" visible="false">
+      <VBox fx:id="VBox_MenuPrincipal" alignment="CENTER" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" spacing="20.0" style="-fx-background-color: #000000;" visible="false">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
             <Button fx:id="Btn_IniciarSesion" mnemonicParsing="false" onMouseClicked="#onBtn_IniciarSesion" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Iniciar Sesion" translateX="250.0" translateY="-70.0">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="40.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label prefHeight="76.0" prefWidth="450.0" style="-fx-background-color: #FFC6C6; -fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" text="MetaPlay">
+            <Label prefHeight="76.0" prefWidth="450.0" style="-fx-background-color: #fff700; -fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" text="MetaPlay">
                <font>
-                  <Font name="Magneto Bold" size="52.0" />
+                  <Font name="Lucida Console" size="52.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="106.0" fitWidth="114.0">
@@ -48,14 +48,17 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="-10.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <Separator prefWidth="200.0" style="-fx-background-color: BLACK;" />
-            <Label text="Bienvenido a la app de MetaPlay" />
+            <Separator prefHeight="4.0" prefWidth="600.0" style="-fx-background-color: BLACK;" />
+            <Label text="Bienvenido a la app de MetaPlay" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font></Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btn_MostrarJuegos" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                  <Button fx:id="btn_MostrarJuegos" maxHeight="74.0" maxWidth="155.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="74.0" prefWidth="155.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                      <font>
                         <Font name="Maiandra GD" size="15.0" />
                      </font>
@@ -66,12 +69,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_filtrarConsola" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarConsolaButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
+                  <Button fx:id="btn_filtrarConsola" maxHeight="74.0" maxWidth="155.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarConsolaButton" prefHeight="71.0" prefWidth="155.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_filtrarGenero" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarGeneroButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
+                  <Button fx:id="btn_filtrarGenero" maxHeight="74.0" maxWidth="155.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarGeneroButton" prefHeight="60.0" prefWidth="155.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -83,11 +86,11 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_Registro" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffe700;">
                <children>
-                  <Button fx:id="btn_atras_Registrarse" mnemonicParsing="false" onAction="#onInicioButton">
+                  <Button fx:id="btn_atras_Registrarse" mnemonicParsing="false" onAction="#onInicioButton" style="-fx-background-color: #ffe700;">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -96,8 +99,14 @@
                            <image>
                               <Image url="@../../../img/atras.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <ImageView fitHeight="74.0" fitWidth="76.0">
                      <image>
@@ -109,26 +118,22 @@
                   </ImageView>
                   <Label text="Registrarse">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="52.0" />
                      </font>
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="25.0" />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
-            <Separator maxWidth="510.0" prefHeight="3.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="70.0" />
-               </VBox.margin></Separator>
             <HBox prefHeight="289.0" prefWidth="640.0">
                <children>
                   <VBox prefHeight="297.0" prefWidth="252.0">
                      <children>
-                        <Label text="Regsitrar Usuario">
+                        <Label text="Regsitrar Usuario" textFill="#fffa00">
                            <font>
                               <Font name="Berlin Sans FB" size="20.0" />
                            </font>
@@ -138,12 +143,12 @@
                         </Label>
                         <HBox prefHeight="78.0" prefWidth="193.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="Nombre">
+                              <Label prefHeight="30.0" prefWidth="111.0" text="Nombre" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroNombre">
+                              <TextField fx:id="TextField_RegistroNombre" promptText="Nombre">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -158,12 +163,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="32.0" prefHeight="78.0" prefWidth="193.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="116.0" text="Apellidos">
+                              <Label prefHeight="30.0" prefWidth="116.0" text="Apellidos" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroApellidos" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroApellidos" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" promptText="Apellidos">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -177,12 +182,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="71.0" prefHeight="78.0" prefWidth="193.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="97.0" text="Usuario">
+                              <Label prefHeight="30.0" prefWidth="97.0" text="Usuario" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroUsuario" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroUsuario" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" promptText="Usuario">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -197,12 +202,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="84.0" prefHeight="78.0" prefWidth="193.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="156.0" text="Contraseña">
+                              <Label prefHeight="30.0" prefWidth="156.0" text="Contraseña" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroContraseña" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroContraseña" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" promptText="Contraseña">
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor></TextField>
@@ -213,12 +218,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="107.0" prefHeight="78.0" prefWidth="193.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="91.0" text="Correo">
+                              <Label prefHeight="30.0" prefWidth="91.0" text="Correo" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroCorreo" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0">
+                              <TextField fx:id="TextField_RegistroCorreo" maxHeight="25.0" maxWidth="145.0" minHeight="25.0" minWidth="145.0" prefHeight="25.0" prefWidth="145.0" promptText="Correo">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -233,7 +238,7 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="132.0" minHeight="30.0" prefHeight="30.0" prefWidth="252.0">
                            <children>
-                              <Label prefHeight="60.0" prefWidth="182.0" text="Nacimiento">
+                              <Label prefHeight="60.0" prefWidth="182.0" text="Nacimiento" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -261,7 +266,7 @@
                         </Separator>
                         <Button fx:id="Btn_RegistrarUsuario" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarUsuario" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Usuario">
                            <VBox.margin>
-                              <Insets left="60.0" top="20.0" />
+                              <Insets bottom="1.0" left="60.0" top="10.0" />
                            </VBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -272,7 +277,7 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0">
+                  <Separator orientation="VERTICAL" prefHeight="344.0" prefWidth="6.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -282,7 +287,7 @@
                   </Separator>
                   <VBox prefHeight="297.0" prefWidth="252.0">
                      <children>
-                        <Label text="Registrar empresa">
+                        <Label text="Registrar empresa" textFill="#ffe700">
                            <font>
                               <Font name="Berlin Sans FB" size="20.0" />
                            </font>
@@ -292,12 +297,12 @@
                         </Label>
                         <HBox maxHeight="30.0" maxWidth="252.0" minHeight="30.0" minWidth="193.0" prefHeight="30.0" prefWidth="193.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="CIF">
+                              <Label prefHeight="30.0" prefWidth="111.0" text="CIF" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroCIF" maxHeight="25.0" maxWidth="145.0">
+                              <TextField fx:id="TextField_RegistroCIF" maxHeight="25.0" maxWidth="145.0" promptText="X-00000000">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -312,12 +317,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="32.0" prefHeight="30.0" prefWidth="252.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="Nombre">
+                              <Label prefHeight="30.0" prefWidth="111.0" text="Nombre" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroNombreEmpresa" maxWidth="145.0">
+                              <TextField fx:id="TextField_RegistroNombreEmpresa" maxWidth="145.0" promptText="Company">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -332,12 +337,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="252.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="114.0" text="Contraseña">
+                              <Label prefHeight="30.0" prefWidth="114.0" text="Contraseña" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroContraseñaEmpresa">
+                              <TextField fx:id="TextField_RegistroContraseñaEmpresa" promptText="Contraseña">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -352,12 +357,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="110.0" maxHeight="30.0" maxWidth="252.0" prefHeight="30.0" prefWidth="252.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="Correo">
+                              <Label prefHeight="30.0" prefWidth="111.0" text="Correo" textFill="#fffa00">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextField_RegistroCorreoEmpresa">
+                              <TextField fx:id="TextField_RegistroCorreoEmpresa" promptText="Correo">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -370,9 +375,9 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <Label prefHeight="69.0" prefWidth="265.0" style="-fx-background-color: #d8c4c4;" text="&#9;Registrar una empresa permite realizar&#10;  valoraciones criticas, ademas podras tener &#10;  ventajas como la de añadir nuevos&#10;  videojuegos a la plataforma.">
+                        <Label prefHeight="146.0" prefWidth="252.0" style="-fx-background-color: #d8c4c4;" text="&#9;Registrar una empresa permite realizar&#10;  valoraciones criticas, ademas podras tener &#10;  ventajas como la de añadir nuevos&#10;  videojuegos a la plataforma.">
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets top="5.0" />
                            </VBox.margin>
                         </Label>
                         <Separator prefWidth="200.0">
@@ -380,12 +385,12 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Separator>
-                        <Button fx:id="Btn_RegistrarEmpresa" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarEmpresa" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa">
+                        <Button fx:id="Btn_RegistrarEmpresa" disable="true" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarEmpresa" prefHeight="90.0" prefWidth="163.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa &#10;(No disponible)">
                            <VBox.margin>
-                              <Insets left="60.0" top="20.0" />
+                              <Insets bottom="10.0" left="60.0" top="10.0" />
                            </VBox.margin>
                            <cursor>
-                              <Cursor fx:constant="HAND" />
+                              <Cursor fx:constant="NONE" />
                            </cursor>
                         </Button>
                      </children>
@@ -397,9 +402,9 @@
             </HBox>
          </children>
       </VBox>
-      <VBox maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0">
                      <image>
@@ -409,7 +414,7 @@
                         <Insets left="30.0" top="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Menu de Usuario">
+                  <Label text="Menu de Empresa">
                      <font>
                         <Font name="Magneto Bold" size="52.0" />
                      </font>
@@ -419,14 +424,9 @@
                   </Label>
                </children>
             </HBox>
-            <Separator maxWidth="510.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="70.0" />
-               </VBox.margin>
-            </Separator>
             <VBox maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="100.0">
                <children>
-                  <Label text="Ver Juegos">
+                  <Label text="Ver Juegos" textFill="#fff700">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
@@ -440,7 +440,7 @@
                      </VBox.margin></Separator>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_MostrarJuegos1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                        <Button fx:id="btn_MostrarJuegos1" maxHeight="70.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="70.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -451,7 +451,7 @@
                               <Insets left="90.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="btn_MostrarJuegos11" layoutX="10.0" layoutY="10.0" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                        <Button fx:id="btn_MostrarJuegos11" layoutX="10.0" layoutY="10.0" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -462,7 +462,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="btn_MostrarJuegos111" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                        <Button fx:id="btn_MostrarJuegos111" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -482,7 +482,7 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="113.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="100.0">
                <children>
-                  <Label text="Valoraciones">
+                  <Label text="Valoraciones" textFill="#fff700">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
@@ -497,7 +497,7 @@
                   </Separator>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_MostrarJuegos22" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Nueva &#10;valoracion">
+                        <Button fx:id="btn_MostrarJuegos22" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Nueva &#10;valoracion">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -508,7 +508,7 @@
                               <Insets left="170.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="btn_MostrarJuegos222" layoutX="10.0" layoutY="10.0" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
+                        <Button fx:id="btn_MostrarJuegos222" layoutX="10.0" layoutY="10.0" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -531,38 +531,33 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_MenuDeUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="Vbox_MenuDeUsuario" maxHeight="480.0" maxWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: BLACK;">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="114.0" prefWidth="640.0" style="-fx-background-color: #fff700;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../img/iconoEmpresa.png" />
+                        <Image url="@../../../img/usuario.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="50.0" top="15.0" />
+                        <Insets left="40.0" top="34.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label text="Menu Usuario">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="52.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="20.0" top="30.0" />
                      </HBox.margin></Label>
                </children>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
-            <Separator maxWidth="600.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Separator>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Ver Juegos">
+                  <Label text="Ver Juegos" textFill="#fff700">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -577,7 +572,7 @@
                   </Separator>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_MostrarJuegos2" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
+                        <Button fx:id="btn_MostrarJuegos2" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#onBtn_MostrarJuegos" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="    Ver Juegos&#10;Mejor Valorados">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -588,12 +583,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_filtrarConsola1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarConsolaButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
+                        <Button fx:id="btn_filtrarConsola1" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarConsolaButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;  por consola">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_filtrarGenero1" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarGeneroButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
+                        <Button fx:id="btn_filtrarGenero1" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onAction="#onEntrarMenuFiltrarGeneroButton" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar juegos &#10;   por genero&#10;">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -607,7 +602,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Valoraciones">
+                  <Label text="Valoraciones" textFill="#fff700">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -622,7 +617,7 @@
                   </Separator>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btn_NuevaValoracion" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#onbtn_NuevaValoracion" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Nueva valoracion">
+                        <Button fx:id="btn_NuevaValoracion" maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="160.0" mnemonicParsing="false" onMouseClicked="#onbtn_NuevaValoracion" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Nueva valoracion">
                            <font>
                               <Font name="Maiandra GD" size="15.0" />
                            </font>
@@ -633,15 +628,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_VerValoraciones" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnAddVideoJuego" maxHeight="60.0" maxWidth="140.0" minHeight="60.0" minWidth="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Añadir juego&#10;">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
+                        <Button maxHeight="60.0" maxWidth="140.0" minHeight="70.0" minWidth="160.0" mnemonicParsing="false" onAction="#onVerValoraciones" prefHeight="60.0" prefWidth="140.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="   Ver mis&#10;valoraciones">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -703,36 +690,31 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="AddValoracion" prefHeight="480.0" prefWidth="640.0">
+      <VBox fx:id="AddValoracion" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: Black;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0">
                      <image>
                         <Image url="@../../../img/iconoValoracion.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="20.0" top="15.0" />
+                        <Insets left="20.0" top="25.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label text="Añadir Valoracion">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="52.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="10.0" top="25.0" />
                      </HBox.margin>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
-            <Separator maxWidth="510.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="60.0" />
-               </VBox.margin>
-            </Separator>
             <GridPane prefHeight="269.0" prefWidth="640.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="172.0" />
@@ -745,7 +727,7 @@
                   <RowConstraints maxHeight="31.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Puntuacion">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Puntuacion" textFill="#fff700">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -753,7 +735,7 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Comentario" GridPane.rowIndex="1">
+                  <Label text="Comentario" textFill="#fff700" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -769,7 +751,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextArea>
-                  <Button fx:id="SaveValoracion" mnemonicParsing="false" onMouseClicked="#onSaveValoracion" prefHeight="58.0" prefWidth="80.0" text="Guardar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="SaveValoracion" mnemonicParsing="false" onMouseClicked="#onSaveValoracion" prefHeight="58.0" prefWidth="100.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Guardar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets top="40.0" />
                      </GridPane.margin>
@@ -777,7 +759,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="46.0" text="VideoJuego" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="46.0" text="VideoJuego" textFill="#fff700" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -794,11 +776,11 @@
             </GridPane>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_MejorValorados" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
+      <VBox fx:id="Vbox_MejorValorados" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" style="-fx-background-color: black;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox maxHeight="103.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
-                  <Button fx:id="btn_atras_MejorValorados" mnemonicParsing="false" onAction="#onInicioButton">
+                  <Button fx:id="btn_atras_MejorValorados" mnemonicParsing="false" onAction="#onInicioButton" style="-fx-background-color: #fff700;">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0">
                            <image>
@@ -812,21 +794,24 @@
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <ImageView fitHeight="70.0" fitWidth="70.0" translateX="-20.0">
                      <image>
                         <Image url="@../../../img/icon-valoracion.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="10.0" top="50.0" />
+                        <Insets left="40.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label text="Mejor Valorados" translateX="-20.0">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="49.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" top="50.0" />
+                        <Insets bottom="10.0" left="10.0" top="25.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -834,23 +819,18 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <Separator maxWidth="510.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="70.0" top="10.0" />
-               </VBox.margin>
-            </Separator>
-            <ListView fx:id="ListView_MejorValorados" maxWidth="600.0" minWidth="180.0" prefHeight="270.0" prefWidth="180.0">
+            <ListView fx:id="ListView_MejorValorados" maxWidth="600.0" minWidth="180.0" prefHeight="337.0" prefWidth="600.0">
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
             </ListView>
          </children>
       </VBox>
-      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" visible="false">
+      <VBox fx:id="VBox_InicioSesion" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
-                  <Button fx:id="Btn_atras_InicioSesion" mnemonicParsing="false" onAction="#onInicioButton" translateX="-30.0">
+                  <Button fx:id="Btn_atras_InicioSesion" mnemonicParsing="false" onAction="#onInicioButton" style="-fx-background-color: #fff700;" translateX="-30.0">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0">
                            <image>
@@ -870,15 +850,15 @@
                         <Image url="@../../../img/videojuego.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="-15.0" top="50.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label text="Iniciar sesión" translateX="-10.0">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="41.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="5.0" top="40.0" />
+                        <Insets left="5.0" top="25.0" />
                      </HBox.margin>
                      <padding>
                         <Insets left="10.0" top="10.0" />
@@ -888,7 +868,7 @@
                   <Button fx:id="Btn_Registrarse" mnemonicParsing="false" onMouseClicked="#onBtn_Registrarse" styleClass="btn-inicioSesion" stylesheets="@../../../style.css" text="Registrarse" translateX="-10.0">
 
                      <HBox.margin>
-                        <Insets top="20.0" />
+                        <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -899,20 +879,16 @@
                   <Insets left="50.0" />
                </padding>
             </HBox>
-            <Separator maxWidth="510.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="70.0" top="10.0" />
-               </VBox.margin></Separator>
             <VBox prefHeight="106.0" prefWidth="830.0" translateX="70.0">
                <children>
                   <HBox prefHeight="36.0" prefWidth="600.0">
                      <children>
-                        <Label text="Usuario" translateX="12.0">
+                        <Label text="Usuario" textFill="#fff700" translateX="12.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="TextField_InicioSesionUsuario" translateX="12.0" translateY="4.0">
+                        <TextField fx:id="TextField_InicioSesionUsuario" promptText="Usuario" translateX="12.0" translateY="4.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -927,19 +903,19 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Contrseña">
+                        <Label text="Contrseña" textFill="#fff700">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="TextField_InicioSesionContraseña">
+                        <PasswordField fx:id="TextField_InicioSesionContraseña" promptText="Contraseña">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </PasswordField>
                      </children>
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets />
                      </VBox.margin>
                   </HBox>
                </children>
@@ -947,7 +923,7 @@
                   <Insets left="100.0" top="50.0" />
                </VBox.margin>
             </VBox>
-            <HBox prefHeight="83.0" prefWidth="626.0" translateY="-40.0">
+            <HBox prefHeight="83.0" prefWidth="626.0" style="-fx-background-color: BLACK;" translateY="-40.0">
                <children>
                   <Button fx:id="Btn_Acceder" mnemonicParsing="false" onMouseClicked="#onBtn_Acceder" prefHeight="44.0" prefWidth="101.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Acceder">
                      <HBox.margin>
@@ -967,11 +943,11 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="VboxFiltrarJuego" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0" visible="false">
+      <VBox fx:id="VboxFiltrarJuego" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="490.0" prefWidth="650.0" style="-fx-background-color: black;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onInicioButton">
+                  <Button mnemonicParsing="false" onAction="#onInicioButton" style="-fx-background-color: #fff700;">
                      <graphic>
                         <ImageView fx:id="btn_atras_Filtrar" fitHeight="20.0" fitWidth="20.0">
                            <image>
@@ -985,21 +961,27 @@
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <ImageView fitHeight="50.0" fitWidth="50.0">
                      <image>
                         <Image url="@../../../img/filtrar.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="130.0" top="25.0" />
+                        <Insets left="140.0" top="27.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label text="Filtrar">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="52.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" top="15.0" />
+                        <Insets left="10.0" top="25.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -1007,16 +989,11 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <Separator maxWidth="510.0" prefWidth="300.0">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="70.0" />
-               </VBox.margin>
-            </Separator>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="300.0" prefWidth="300.0">
                      <children>
-                        <Label contentDisplay="CENTER" text="Seleccione opcion">
+                        <Label contentDisplay="CENTER" text="Seleccione opcion" textFill="#fff700">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -1024,7 +1001,10 @@
                               <Insets left="5.0" top="30.0" />
                            </VBox.margin>
                         </Label>
-                        <ChoiceBox fx:id="SeleccionFiltro" prefWidth="150.0" />
+                        <ChoiceBox fx:id="SeleccionFiltro" prefWidth="150.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ChoiceBox>
                         <Button fx:id="Btn_Filtrar" mnemonicParsing="false" onAction="#onFiltrarButton" styleClass="btn-principal" stylesheets="@../../../style.css" text="Filtrar">
                            <VBox.margin>
                               <Insets left="40.0" top="10.0" />
@@ -1035,23 +1015,26 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="140.0" top="40.0" />
+                        <Insets left="240.0" top="40.0" />
                      </HBox.margin>
                   </VBox>
                </children>
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="Vbox_BusquedaFiltrada" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" visible="false">
+      <VBox fx:id="Vbox_BusquedaFiltrada" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" style="-fx-background-color: black;" visible="false">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio">
+                  <Button mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio" style="-fx-background-color: #fff700;">
                      <graphic>
                         <ImageView fx:id="btn_atras_BusquedaFiltrada" fitHeight="20.0" fitWidth="20.0">
                            <image>
                               <Image url="@../../../img/atras.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
                      <HBox.margin>
@@ -1066,40 +1049,69 @@
                         <Image url="@../../../img/filtrar.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="-20.0" top="55.0" />
+                        <Insets left="10.0" top="25.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label text="Busqueda Filtrada">
                      <font>
-                        <Font name="Magneto Bold" size="52.0" />
+                        <Font name="Lucida Console" size="49.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" top="45.0" />
+                        <Insets left="5.0" top="22.0" />
                      </HBox.margin>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
-            <Separator maxWidth="510.0" prefWidth="300.0">
+            <ListView fx:id="ListView_JuegosFiltrados" maxWidth="600.0" minHeight="300.0" minWidth="180.0" prefHeight="350.0" prefWidth="600.0">
                <VBox.margin>
-                  <Insets bottom="10.0" left="70.0" />
-               </VBox.margin>
-            </Separator>
-            <ListView fx:id="ListView_JuegosFiltrados" maxWidth="600.0" minHeight="300.0" minWidth="180.0" prefHeight="270.0" prefWidth="300.0">
-               <VBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="20.0" top="13.0" />
                </VBox.margin>
             </ListView>
-            <Button fx:id="Btn_BusquedaFiltrada_VolverInicio" mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio" styleClass="btn-principal" stylesheets="@../../../style.css" text="Inicio">
+         </children>
+      </VBox>
+      <VBox fx:id="MisValoraciones" maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="500.0" prefWidth="660.0" style="-fx-background-color: black;" visible="false">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio" style="-fx-background-color: #fff700;">
+                     <graphic>
+                        <ImageView fx:id="btn_atras_BusquedaFiltrada1" fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../../../img/atras.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label text="Mis valoraciones">
+                     <font>
+                        <Font name="Lucida Console" size="49.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="40.0" top="22.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
                <VBox.margin>
-                  <Insets left="280.0" top="10.0" />
+                  <Insets />
                </VBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            </HBox>
+            <ListView fx:id="ListView_ValoracionesUsuario" maxWidth="600.0" minHeight="300.0" minWidth="180.0" prefHeight="350.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets left="20.0" top="13.0" />
+               </VBox.margin>
+            </ListView>
          </children>
       </VBox>
    </children>
