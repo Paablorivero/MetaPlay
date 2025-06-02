@@ -314,7 +314,7 @@ public class AccessSql {
 
     //Encontrar en la lista los videojuegos de una consola exacta (filtro por consola)
 
-    public List<VideoJuego> getVideoJuegosConsola(Consolas consola) {
+    public List<VideoJuego> getVideoJuegosConsola(Consola consola) {
         List<VideoJuego> videoJuegos = new ArrayList<>();
 
         String sql = "SELECT ID, Consola_ID, Nombre, Genero, Desarrollador, Precio FROM Videojuegos WHERE Consola_ID=?";
