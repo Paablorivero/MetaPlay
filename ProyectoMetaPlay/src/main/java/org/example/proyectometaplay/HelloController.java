@@ -82,16 +82,6 @@ public class HelloController implements Initializable {
     @FXML
     private ListView<VideoJuego> ListView_MejorValorados;
 
-//VENTANA REGISTRAR EMPRESA
-    @FXML
-    private TextField TextField_RegistroCIF;
-    @FXML
-    private TextField TextField_RegistroNombreEmpresa;
-    @FXML
-    private TextField TextField_RegistroContraseñaEmpresa;
-    @FXML
-    private TextField TextField_RegistroCorreoEmpresa;
-
 //VENTANA FILTRO
     @FXML
     private ChoiceBox<String> SeleccionFiltro;
@@ -126,6 +116,23 @@ public class HelloController implements Initializable {
     @FXML
     protected void onInicioButton(ActionEvent event){//Boton comun para volver al menu principal
         //Ir al panel inicial
+        if(usuarioAutenticado == null) {
+            selectPanelVisible(0);
+        }else {
+            selectPanelVisible(3);
+        }
+        limpiarFormulario();
+        cleanLogIn();
+        SeleccionFiltro.getItems().clear();
+        ListView_ValoracionesUsuario.setItems(null);
+    }
+
+    @FXML
+    protected void onBtn_CerrarSesion(ActionEvent event){//Boton comun para volver al menu principal
+        //Ir al panel inicial
+        if(usuarioAutenticado != null) {
+            usuarioAutenticado = null;
+        }
         selectPanelVisible(0);
         limpiarFormulario();
         cleanLogIn();
@@ -178,14 +185,6 @@ public class HelloController implements Initializable {
             }
         }
         SeleccionFiltro.getItems().clear();
-    }
-
-
-    //Boton para atras de busqueda filtrada para que se limpie las listview
-    @FXML
-    protected void Btn_BusquedaFiltrada_VolverInicio(ActionEvent event){
-        ListView_JuegosFiltrados.setItems(null);
-        selectPanelVisible(0);
     }
 
     @FXML
@@ -249,38 +248,13 @@ public class HelloController implements Initializable {
             }
         }
     });
-    TextField_RegistroNombreEmpresa.focusedProperty().addListener((observable, oldValue, newValue) -> {
-        if(!newValue){
-            if(!validateName(TextField_RegistroNombreEmpresa.getText())){
-                TextField_RegistroNombreEmpresa.setText("");
-                TextField_RegistroNombreEmpresa.setPromptText("Valor incorrecto");
-            }
-        }
-    });
+
 
     TextField_RegistroCorreo.focusedProperty().addListener((observable, oldValue, newValue) -> {
         if(!newValue){
             if(!validateEmail(TextField_RegistroCorreo.getText())){
                 TextField_RegistroCorreo.setText("");
                 TextField_RegistroCorreo.setPromptText("Valor incorrecto");
-            }
-        }
-    });
-
-    TextField_RegistroCorreoEmpresa.focusedProperty().addListener((observable, oldValue, newValue) -> {
-        if(!newValue){
-            if(!validateEmail(TextField_RegistroCorreoEmpresa.getText())){
-                TextField_RegistroCorreoEmpresa.setText("");
-                TextField_RegistroCorreoEmpresa.setPromptText("Valor incorrecto");
-            }
-        }
-    });
-
-    TextField_RegistroCIF.focusedProperty().addListener((observable, oldValue, newValue) -> {
-        if(!newValue){
-            if(!validateCif(TextField_RegistroCIF.getText())){
-                TextField_RegistroCIF.setText("");
-                TextField_RegistroCIF.setPromptText("Valor incorrecto");
             }
         }
     });
@@ -364,19 +338,7 @@ public class HelloController implements Initializable {
     }
 
 
-    //registrar Empresa
-    @FXML
-    protected void onBtn_RegistrarEmpresa() {
-        Empresa newEmpresa = new Empresa(
-        TextField_RegistroCIF.getText(),
-        TextField_RegistroNombreEmpresa.getText(),
-        TextField_RegistroContraseñaEmpresa.getText(),
-        TextField_RegistroCorreoEmpresa.getText()
-      );
-        miData.registrarEmpresa(newEmpresa);
-        selectPanelVisible(1);
 
-    }
     //Registrar Usuario
     @FXML
     protected void onBtn_RegistrarUsuario() {
@@ -483,10 +445,6 @@ public class HelloController implements Initializable {
 
     //METODOS DE LIMPIEZA DE FORMULARIO
     private void limpiarFormulario() {
-        TextField_RegistroCIF.setText("");
-        TextField_RegistroNombreEmpresa.setText("");
-        TextField_RegistroContraseñaEmpresa.setText("");
-        TextField_RegistroCorreoEmpresa.setText("");
         TextField_RegistroNombre.setText("");
         TextField_RegistroApellidos.setText("");
         TextField_RegistroUsuario.setText("");

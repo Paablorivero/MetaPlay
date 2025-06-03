@@ -287,112 +287,31 @@
                   </Separator>
                   <VBox prefHeight="297.0" prefWidth="252.0">
                      <children>
-                        <Label text="Registrar empresa" textFill="#ffe700">
-                           <font>
-                              <Font name="Berlin Sans FB" size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="50.0" top="20.0" />
-                           </VBox.margin>
-                        </Label>
                         <HBox maxHeight="30.0" maxWidth="252.0" minHeight="30.0" minWidth="193.0" prefHeight="30.0" prefWidth="193.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="CIF" textFill="#fffa00">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TextField_RegistroCIF" maxHeight="25.0" maxWidth="145.0" promptText="X-00000000">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor>
-                              </TextField>
-                           </children>
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="32.0" prefHeight="30.0" prefWidth="252.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="Nombre" textFill="#fffa00">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TextField_RegistroNombreEmpresa" maxWidth="145.0" promptText="Company">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor>
-                              </TextField>
-                           </children>
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="252.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="114.0" text="Contraseña" textFill="#fffa00">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TextField_RegistroContraseñaEmpresa" promptText="Contraseña">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor>
-                              </TextField>
-                           </children>
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="110.0" maxHeight="30.0" maxWidth="252.0" prefHeight="30.0" prefWidth="252.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="111.0" text="Correo" textFill="#fffa00">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TextField_RegistroCorreoEmpresa" promptText="Correo">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor>
-                              </TextField>
-                           </children>
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <Label prefHeight="146.0" prefWidth="252.0" style="-fx-background-color: #d8c4c4;" text="&#9;Registrar una empresa permite realizar&#10;  valoraciones criticas, ademas podras tener &#10;  ventajas como la de añadir nuevos&#10;  videojuegos a la plataforma.">
+                        <Label prefHeight="146.0" prefWidth="252.0" style="-fx-background-color: #d8c4c4;" text="&#9;        Al crear un usuario accedes a poder &#10;   realizar valoraciones para el publico ademas&#10; de tener un historial de valoraciones personal">
                            <VBox.margin>
-                              <Insets top="5.0" />
+                              <Insets bottom="150.0" top="5.0" />
                            </VBox.margin>
                         </Label>
-                        <Separator prefWidth="200.0">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <Button fx:id="Btn_RegistrarEmpresa" disable="true" mnemonicParsing="false" onMouseClicked="#onBtn_RegistrarEmpresa" prefHeight="90.0" prefWidth="163.0" styleClass="btn-principal" stylesheets="@../../../style.css" text="Registrar Empresa &#10;(No disponible)">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="60.0" top="10.0" />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="NONE" />
-                           </cursor>
-                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -550,6 +469,11 @@
                      <HBox.margin>
                         <Insets left="20.0" top="30.0" />
                      </HBox.margin></Label>
+                  <Button mnemonicParsing="false" onAction="#onBtn_CerrarSesion" styleClass="btn-cerrarSesion" stylesheets="@../../../style.css" text="Cerrar Sesion">
+                     <HBox.margin>
+                        <Insets left="40.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets />
@@ -1026,7 +950,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio" style="-fx-background-color: #fff700;">
+                  <Button mnemonicParsing="false" onAction="#onInicioButton" style="-fx-background-color: #fff700;">
                      <graphic>
                         <ImageView fx:id="btn_atras_BusquedaFiltrada" fitHeight="20.0" fitWidth="20.0">
                            <image>
@@ -1076,7 +1000,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff700;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#Btn_BusquedaFiltrada_VolverInicio" style="-fx-background-color: #fff700;">
+                  <Button mnemonicParsing="false" onAction="#onInicioButton" style="-fx-background-color: #fff700;">
                      <graphic>
                         <ImageView fx:id="btn_atras_BusquedaFiltrada1" fitHeight="20.0" fitWidth="20.0">
                            <image>
