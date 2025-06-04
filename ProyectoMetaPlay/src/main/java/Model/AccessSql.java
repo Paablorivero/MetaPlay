@@ -383,7 +383,7 @@ public class AccessSql {
                 "   v.Nombre AS Nombre_Videojuego, " +
                 "   COALESCE(AVG(u.Puntuacion), 0) AS Puntuacion_Media_Usuarios, " +
                 "   COALESCE(AVG(e.Puntuacion), 0) AS Puntuacion_Media_Empresas, " +
-                "   (COALESCE(AVG(u.Puntuacion), 0) * 0.5 + COALESCE(AVG(e.Puntuacion), 0) * 0.5) AS Puntuacion_Global " +
+                "   (COALESCE(AVG(u.Puntuacion), 0) + COALESCE(AVG(e.Puntuacion), 0) ) AS Puntuacion_Global " +
                 "FROM " +
                 "   Videojuegos v " +
                 "LEFT JOIN Valoracion_Usuario u ON v.ID = u.Videojuego_ID " +
